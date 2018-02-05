@@ -1,0 +1,20 @@
+" --use_fast_math","-Xptxas --opt-level="," --gpu-architecture="," --ftz=","-Xptxas --def-store-cache=","-Xptxas --force-store-cache=","-Xptxas --force-load-cache=","-Xptxas --allow-expensive-optimizations="," --fmad=","-Xptxas --fmad="," --optimize=","-Xnvlink --preserve-relocs"," --relocatable-device-code="," --prec-div=","-Xptxas --def-load-cache=","-Xptxas --maxrregcount="," --prec-sqrt="," --no-align-double","response","complete","id"
+"on","0","sm_52","false","ca","lu","lu","false","true","true","3","on","false","false","ca","63","true","on",-1.0,false,43617715042667621
+"on","3","sm_52","true","lu","lu","ca","false","false","true","0","on","true","true","lu","63","true","off",-1.0,false,958217464674883760
+"off","3","sm_20","false","ca","ca","ca","false","true","true","0","off","true","false","ca","63","false","off",-1.0,false,959115196889403407
+"off","0","sm_52","true","ca","lu","ca","true","true","true","0","off","false","false","lu","16","true","off",-1.0,false,1633846960040955784
+"on","0","sm_20","true","lu","lu","lu","false","true","false","0","off","false","true","ca","16","false","off",-1.0,false,1834890872039062402
+"on","3","sm_52","true","lu","ca","ca","false","true","false","3","off","true","false","ca","16","true","on",-1.0,false,2079426279814855221
+"off","0","sm_20","false","ca","lu","ca","false","false","false","3","on","true","true","ca","16","true","off",-1.0,false,2478717708642768507
+"off","3","sm_20","true","lu","lu","ca","true","false","true","3","on","false","false","ca","16","false","on",-1.0,false,5996841459714154114
+"off","3","sm_52","false","lu","lu","lu","false","false","false","3","off","false","false","lu","63","false","off",-1.0,false,7091713067326740660
+"off","0","sm_52","true","ca","ca","lu","false","false","true","3","off","true","true","lu","16","false","on",-1.0,false,8173762242826480262
+"on","3","sm_20","false","ca","lu","lu","true","false","false","0","off","true","false","lu","16","true","on",-1.0,false,8285372630617469237
+"on","0","sm_20","true","ca","ca","ca","false","false","false","0","on","false","false","lu","63","false","on",-1.0,false,8740433441887167032
+"off","3","sm_52","true","ca","lu","lu","true","true","false","0","on","true","true","ca","63","false","on",-1.0,false,10598204167886587453
+"on","0","sm_20","false","lu","lu","ca","true","true","true","3","off","true","true","lu","63","false","on",-1.0,false,11137070694082429141
+"off","0","sm_52","false","lu","ca","ca","true","false","false","0","off","false","true","ca","63","true","on",-1.0,false,13885411535773655866
+"on","3","sm_20","true","ca","ca","lu","true","false","true","3","off","false","true","ca","63","true","off",-1.0,false,14417497856295564523
+"off","3","sm_20","false","lu","ca","lu","false","true","true","0","on","false","true","lu","16","true","on",-1.0,false,17742960984955064645
+"on","0","sm_52","false","lu","ca","lu","true","false","true","0","on","true","false","ca","16","false","off",-1.0,false,17842088660746070591
+"on","3","sm_52","false","ca","ca","ca","true","true","false","3","on","false","true","lu","16","false","off",-1.0,false,17852010067126497070
