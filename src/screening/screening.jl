@@ -267,9 +267,7 @@ function run_experiments()
     design = generate_design(factors)
     experiments = generate_experiments(design, factors)
 
-    experiments_file = open("./experiments.csv", "w+")
-    CSV.write(experiments_file, experiments)
-    close(experiments_file)
+    CSV.write("./experiments.csv", experiments)
 
     flags = generate_flags(experiments)
 
@@ -285,9 +283,7 @@ function run_experiments()
         data = measure(experiments, id, data, replications)
     end
 
-    results_file = open("./results.csv", "w+")
-    CSV.write(results_file, data)
-    close(results_file)
+    CSV.write("./results.csv", data)
 end
 
 run_experiments()
