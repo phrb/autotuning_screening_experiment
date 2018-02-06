@@ -250,6 +250,7 @@ function measure(experiments::DataFrame, id::UInt,
       println(response)
 
       measurement[:response] = response
+      measurement[:complete] = true
 
       if isempty(data)
           data = measurement
@@ -266,11 +267,13 @@ function run_experiments()
     design = generate_design(factors)
     experiments = generate_experiments(design, factors)
 
-    CSV.write("./experiments.csv", experiments)
+    experiments_file = open("./experiments.csv", "w+")
+    CSV.write(experiments_file, experiments)
+    close(experiments_file)
 
     flags = generate_flags(experiments)
 
-    replications = 5
+    replications = 10
 
     data = DataFrame()
 
@@ -282,7 +285,9 @@ function run_experiments()
         data = measure(experiments, id, data, replications)
     end
 
-    CSV.write("./results.csv", data)
+    results_file = open("./results.csv", "w+")
+    CSV.write(results_file, data)
+    close(results_file)
 end
 
 run_experiments()
