@@ -1,4 +1,4 @@
-using JSON, CSV
+using JSON, CSV, DataFrames
 
 include("plackett_burman.jl")
 include("table_utils.jl")
