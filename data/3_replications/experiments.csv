@@ -1,0 +1,20 @@
+ --use_fast_math,-Xptxas --opt-level=, --gpu-architecture=, --ftz=,-Xptxas --force-store-cache=,-Xptxas --force-load-cache=,-Xptxas --allow-expensive-optimizations=,-Xptxas --fmad=, --optimize=,-Xnvlink --preserve-relocs, --relocatable-device-code=, --prec-div=,-Xptxas --maxrregcount=, --prec-sqrt=, --no-align-double,response,complete,id
+off,3,sm_52,false,cs,lu,false,false,3,off,false,false,63,false,off,-1.0,false,921544197035885622
+on,3,sm_30,true,cs,lu,true,false,3,off,true,false,16,true,off,-1.0,false,9053663363471931312
+on,3,sm_52,true,cg,lu,false,false,0,off,false,true,16,true,on,-1.0,false,8796671663844206289
+on,0,sm_30,true,cg,lu,false,false,3,on,true,false,63,false,on,-1.0,false,16372721131719289303
+on,0,sm_52,false,cs,ca,false,false,0,on,false,false,16,true,on,-1.0,false,10416812671492724535
+off,3,sm_30,true,cg,ca,false,true,3,on,false,false,16,false,on,-1.0,false,3118649804581646594
+on,0,sm_52,false,cg,lu,true,true,3,on,false,false,63,true,off,-1.0,false,11340950324400640528
+off,0,sm_52,true,cs,ca,true,false,3,off,false,true,63,false,on,-1.0,false,11210325699133573381
+on,3,sm_52,false,cs,ca,false,true,3,on,true,true,16,false,off,-1.0,false,12248117985829486578
+off,3,sm_52,false,cg,lu,true,true,0,off,true,false,16,false,on,-1.0,false,4652932033650992733
+off,0,sm_30,false,cg,lu,true,false,0,on,false,true,16,false,off,-1.0,false,6567371592610880269
+off,0,sm_30,false,cg,ca,false,false,3,off,true,true,16,true,off,-1.0,false,16070137239254836212
+off,0,sm_52,true,cg,ca,false,true,0,off,true,false,63,true,off,-1.0,false,5492321472981993449
+on,0,sm_30,true,cs,ca,true,true,0,off,false,false,16,false,off,-1.0,false,14062325625217616257
+on,3,sm_30,false,cg,ca,true,true,3,off,false,true,63,true,on,-1.0,false,11179885352194058263
+off,0,sm_52,true,cs,lu,true,true,3,on,true,true,16,true,on,-1.0,false,2752547375789190527
+on,3,sm_52,true,cg,ca,true,false,0,on,true,true,63,false,off,-1.0,false,10906773989510573306
+on,0,sm_30,false,cs,lu,false,true,0,off,true,true,63,false,on,-1.0,false,8769171197673896629
+off,3,sm_30,false,cs,ca,true,false,0,on,true,false,63,true,on,-1.0,false,6644955225438185279
