@@ -31,7 +31,7 @@
         "numeric_parameters": {
             "--maxrregcount=": {
                 "min": 16,
-                "max": 128
+                "max": 63
             }
         }
     },
