@@ -211,7 +211,7 @@ function log_state(run_id::UInt)
     write(gpu_load, readstring(`nvidia-smi`))
 
     write(measurements, "$run_id ")
-    write(cpu_load, readstring(`date`))
+    write(measurements, readstring(`date`))
 
     close(cpu)
     close(gpu)
