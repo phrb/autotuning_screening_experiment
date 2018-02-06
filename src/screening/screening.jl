@@ -152,8 +152,35 @@ function generate_flags(experiments::DataFrame)
     flag_dict
 end
 
-function log_state(run_id::UInt)
+function log_state()
+    log_path = "../../data"
+
+    run(`lscpu > $log_path/cpu.txt`)
+    run(`cat /proc/cpuinfo >> $log_path/cpu.txt`)
+
+    run(`lshw > $log_path/hw.txt`)
+
+    run(`nvidia-smi > $log_path/gpu.txt`)
+
+    run(`uname -a > $log_path/uname.txt`)
+
+    run(`date > $log_path/cpu_load.txt`)
+    run(`ps aux >> $log_path/cpu_load.txt`)
+
+    run(`date > $log_path/gpu_load.txt`)
+    run(`nvidia-smi >> $log_path/gpu_load.txt`)
 end
+
+function log_state(run_id::UInt)
+    run(`date > $log_path/cpu_load.txt`)
+    run(`ps aux >> $log_path/cpu_load.txt`)
+
+    run(`date > $log_path/gpu_load.txt`)
+    run(`nvidia-smi >> $log_path/gpu_load.txt`)
+
+    run(`echo -n \"$run_id \" >> $log_path/measurements.txt`)
+end
+
 
 function compile_with_flags(flags::String)
     environment = copy(ENV)
@@ -199,9 +226,11 @@ function run_experiments()
 
     flags = generate_flags(experiments)
 
-    replications = 5
+    replications = 1
 
     data = DataFrame()
+
+    log_state()
 
     for (id, flag) in flags
         log_state(id)
