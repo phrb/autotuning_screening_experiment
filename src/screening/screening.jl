@@ -112,6 +112,7 @@ end
 function compile(command::String)
     environment = copy(ENV)
     environment["NVCC_FLAGS"] = command
+    println(command)
 
     directory = "../gaussian/"
 
