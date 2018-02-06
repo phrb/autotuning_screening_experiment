@@ -11,8 +11,8 @@ import FileIO
         complete::Bool
         id::UInt64
 
-        Measurement(parameters, r) = new(parameters, r, true, hash(string(collect(values(parameters))...)))
-        Measurement(parameters) = new(parameters, -1, false, hash(string(collect(values(parameters))...)))
+        Measurement(parameters, r) = new(parameters, r, true, hash(string(r, collect(values(parameters))...)))
+        Measurement(parameters) = new(parameters, -1, false, hash(string(-1, collect(values(parameters))...)))
     end
 
     function init_table(measurements::Array{Measurement, 1})

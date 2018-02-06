@@ -30,7 +30,7 @@ function generate_search_space(filename::String)
                     end
                 elseif parameter_type == "enumeration_parameters"
                     for parameter in json_data[key][parameter_type]
-                        push!(parameters, Factor(Enumeration,
+                        push!(parameters, Factor(Enumeration, 
                                                  "$prefix $(parameter[1])",
                                                  "$(parameter[2][1])",
                                                  "$(parameter[2][end])"))
@@ -78,16 +78,16 @@ function generate_experiments(design::Array{Int, 2}, factors::Array{Factor, 1})
     init_table(measurements)
 end
 
-function generate_commands(experiments::NextTable)
-    commands = Dict{UInt, String}()
+function generate_flags(experiments::NextTable)
+    flag_dict = Dict{UInt, String}()
 
     for row in experiments
-        command = string()
+        flags = string()
 
         for (flag, value) in zip(keys(row), row)
             if flag != :response && flag != :complete && flag != :id
                 if value == "on"
-                    command = string(command, flag, " ")
+                    flags = string(flags, flag, " ")
                 elseif value != "off"
                     try
                         parse(Int, value)
@@ -95,37 +95,54 @@ function generate_commands(experiments::NextTable)
                         value = string("\"", value, "\"")
                     end
 
-                    command = string(command, flag, value, " ")
-                end
+                    flags = string(flags, flag, value, " ")
+                end                    
             end
         end
 
-        commands[row.id] = strip(command)
+        flag_dict[row.id] = strip(flags)
     end
 
-    commands
+    flag_dict
 end
 
-function log_state()
+function log_state(run_id::UInt)
 end
 
-function compile(command::String)
+function compile_with_flags(flags::String)
     environment = copy(ENV)
-    environment["NVCC_FLAGS"] = command
-    println(command)
+    environment["NVCC_FLAGS"] = flags
 
     directory = "../gaussian/"
 
     c = Cmd(`make`, env = environment, dir = directory)
 
+    println(flags)
     run(c)
 end
 
-function measure()
-    directory = "../gaussian/"
-    c = Cmd(`./run.sh`, dir = directory)
+function measure(experiments::NextTable, id::UInt,
+                 data::Nullable{NextTable}, replications::Int)
+    measurement = filter(p->p.id == id, experiments)
 
-    run(c)
+    for i = 1:replications
+      directory = "../gaussian/"
+      c = Cmd(`./run.sh`, dir = directory)
+      response = @elapsed run(c)
+
+      println(response)
+
+      measurement = NamedTuples.delete(measurement, :response)
+      measurement = NamedTuples.setindex(measurement, :response, response)
+
+      if isnull(data)
+          data = table(measurement)
+      else
+          push!(rows(data), measurement)
+      end
+    end
+
+    data
 end
 
 function run_experiments()
@@ -135,14 +152,19 @@ function run_experiments()
 
     save_to_disk(experiments, "./experiments.csv")
 
-    commands = generate_commands(experiments)
+    flags = generate_flags(experiments)
 
-    for (id, command) in commands
-        println(id)
-        log_state()
-        compile(command)
-        measure()
+    replications = 5
+
+    data = Nullable{NextTable}()
+
+    for (id, flag) in flags
+        log_state(id)
+        compile_with_flags(flag)
+        data = measure(experiments, id, data, replication)
     end
+
+    save_to_disk(data, "./results.csv")
 end
 
 run_experiments()
