@@ -169,7 +169,7 @@ end
 
 function measure(experiments::DataFrame, id::UInt,
                  data::Nullable{DataFrame}, replications::Int)
-    measurement = data[data[:id] .== id, :]
+    measurement = experiments[experiments[:id] .== id, :]
 
     for i = 1:replications
       directory = "../gaussian/"
