@@ -240,23 +240,24 @@ end
 
 function measure(experiments::DataFrame, id::UInt,
                  data::DataFrame, replications::Int)
-    measurement = experiments[experiments[:id] .== id, :]
 
     for i = 1:replications
-      directory = "../gaussian/"
-      c = Cmd(`./run.sh`, dir = directory)
-      response = @elapsed run(c)
+        measurement = deepcopy(experiments[experiments[:id] .== id, :])
 
-      println(response)
+        directory = "../gaussian/"
+        c = Cmd(`./run.sh`, dir = directory)
+        response = @elapsed run(c)
 
-      measurement[:response] = response
-      measurement[:complete] = true
+        println(response)
 
-      if isempty(data)
-          data = measurement
-      else
-          append!(data, measurement)
-      end
+        measurement[:response] = response
+        measurement[:complete] = true
+
+        if isempty(data)
+            data = measurement
+        else
+            append!(data, measurement)
+        end
     end
 
     data
