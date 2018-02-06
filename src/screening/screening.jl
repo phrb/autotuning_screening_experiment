@@ -168,7 +168,7 @@ function compile_with_flags(flags::String)
 end
 
 function measure(experiments::DataFrame, id::UInt,
-                 data::Nullable{DataFrame}, replications::Int)
+                 data::DataFrame, replications::Int)
     measurement = experiments[experiments[:id] .== id, :]
 
     for i = 1:replications
@@ -180,7 +180,7 @@ function measure(experiments::DataFrame, id::UInt,
 
       measurement[:response] = response
 
-      if isnull(data)
+      if isempty(data)
           data = measurement
       else
           append!(data, measurement)
@@ -201,7 +201,7 @@ function run_experiments()
 
     replications = 5
 
-    data = Nullable{DataFrame}()
+    data = DataFrame()
 
     for (id, flag) in flags
         log_state(id)
