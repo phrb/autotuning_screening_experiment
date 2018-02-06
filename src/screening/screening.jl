@@ -201,7 +201,7 @@ function run_experiments()
 
     replications = 5
 
-    data = DataFrame()
+    data = Nullable{DataFrame}()
 
     for (id, flag) in flags
         log_state(id)
