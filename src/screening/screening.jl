@@ -1,4 +1,4 @@
-using JSON
+using JSON, CSV
 
 include("plackett_burman.jl")
 include("table_utils.jl")
@@ -55,6 +55,20 @@ function generate_design(factors::Array{Factor, 1})
     plackett_burman(length(factors) + 4)
 end
 
+function init_dataframe(measurements::Array{Measurement, 1})
+    data = DataFrame()
+
+    for key in keys(measurements[1].parameters)
+        data[key] = [m.parameters[key] for m in measurements]
+    end
+
+    data[:response] = [m.response for m in measurements]
+    data[:complete] = [m.complete for m in measurements]
+    data[:id] = [m.id for m in measurements]
+    
+    data
+end
+
 function generate_experiments(design::Array{Int, 2}, factors::Array{Factor, 1})
     design_size = size(design)
     factors_length = length(factors)
@@ -75,7 +89,7 @@ function generate_experiments(design::Array{Int, 2}, factors::Array{Factor, 1})
         push!(measurements, Measurement(levels))
     end
 
-    init_table(measurements)
+    init_dataframe(measurements)
 end
 
 function generate_flags(experiments::NextTable)
@@ -106,6 +120,38 @@ function generate_flags(experiments::NextTable)
     flag_dict
 end
 
+function generate_flags(experiments::DataFrame)
+    flag_dict = Dict{UInt, String}()
+
+    for i = 1:size(experiments, 1)
+        row = experiments[i, :]
+
+        flags = string()
+
+        for flag in names(row)
+            if flag != :response && flag != :complete && flag != :id
+                if row[flag][1] == "on"
+                    flags = string(flags, flag, " ")
+                elseif row[flag][1] != "off"
+                    value = row[flag][1]
+
+                    try
+                        value = parse(Int, value)
+                    catch ArgumentError
+                        value = string("\"", value, "\"")
+                    end
+
+                    flags = string(flags, flag, value, " ")
+                end                    
+            end
+        end
+
+        flag_dict[row[:id][1]] = strip(flags)
+    end
+
+    flag_dict
+end
+
 function log_state(run_id::UInt)
 end
 
@@ -121,9 +167,9 @@ function compile_with_flags(flags::String)
     run(c)
 end
 
-function measure(experiments::NextTable, id::UInt,
-                 data::Nullable{NextTable}, replications::Int)
-    measurement = filter(p->p.id == id, experiments)
+function measure(experiments::DataFrame, id::UInt,
+                 data::Nullable{DataFrame}, replications::Int)
+    measurement = data[data[:id] .== id, :]
 
     for i = 1:replications
       directory = "../gaussian/"
@@ -132,13 +178,12 @@ function measure(experiments::NextTable, id::UInt,
 
       println(response)
 
-      measurement = NamedTuples.delete(measurement, :response)
-      measurement = NamedTuples.setindex(measurement, :response, response)
+      measurement[:response] = response
 
       if isnull(data)
-          data = table(measurement)
+          data = measurement
       else
-          push!(rows(data), measurement)
+          append!(data, measurement)
       end
     end
 
@@ -150,21 +195,21 @@ function run_experiments()
     design = generate_design(factors)
     experiments = generate_experiments(design, factors)
 
-    save_to_disk(experiments, "./experiments.csv")
+    CSV.write("./experiments.csv", experiments)
 
     flags = generate_flags(experiments)
 
     replications = 5
 
-    data = Nullable{NextTable}()
+    data = DataFrame()
 
     for (id, flag) in flags
         log_state(id)
         compile_with_flags(flag)
-        data = measure(experiments, id, data, replication)
+        data = measure(experiments, id, data, replications)
     end
 
-    save_to_disk(data, "./results.csv")
+    CSV.write("./results.csv", data)
 end
 
 run_experiments()
