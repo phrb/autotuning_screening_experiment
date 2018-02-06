@@ -155,30 +155,74 @@ end
 function log_state()
     log_path = "../../data"
 
-    run(`lscpu \> $log_path/cpu.txt`)
-    run(`cat /proc/cpuinfo \>\> $log_path/cpu.txt`)
+    cpu = open("$log_path/cpu.txt", "a")
+    gpu = open("$log_path/gpu.txt", "a")
 
-    run(`lshw \> $log_path/hw.txt`)
+    cpu_load = open("$log_path/cpu_load.txt", "a")
+    gpu_load = open("$log_path/gpu_load.txt", "a")
 
-    run(`nvidia-smi \> $log_path/gpu.txt`)
+    hw = open("$log_path/hw.txt", "a")
+    uname = open("$log_path/uname.txt", "a")
 
-    run(`uname -a \> $log_path/uname.txt`)
+    write(cpu, readstring(`lscpu`))
+    write(cpu, readstring(`cat /proc/cpuinfo`))
 
-    run(`date \> $log_path/cpu_load.txt`)
-    run(`ps aux \>\> $log_path/cpu_load.txt`)
+    write(hw, readstring(`lshw`))
+    write(hw, readstring(`lspci`))
 
-    run(`date \> $log_path/gpu_load.txt`)
-    run(`nvidia-smi \>\> $log_path/gpu_load.txt`)
+    write(gpu, readstring(`nvidia-smi`))
+
+    write(uname, readstring(`uname -a`))
+
+    write(cpu_load, readstring(`date`))
+    write(cpu_load, readstring(`ps aux`))
+
+    write(gpu_load, readstring(`date`))
+    write(gpu_load, readstring(`nvidia-smi`))
+
+    close(cpu)
+    close(gpu)
+
+    close(cpu_load)
+    close(gpu_load)
+
+    close(hw)
+    close(uname)
 end
 
 function log_state(run_id::UInt)
-    run(`date \> $log_path/cpu_load.txt`)
-    run(`ps aux \>\> $log_path/cpu_load.txt`)
+    log_path = "../../data"
 
-    run(`date \> $log_path/gpu_load.txt`)
-    run(`nvidia-smi \>\> $log_path/gpu_load.txt`)
+    cpu = open("$log_path/cpu.txt", "a")
+    gpu = open("$log_path/gpu.txt", "a")
 
-    run(`echo -n \"$run_id \" \>\> $log_path/measurements.txt`)
+    cpu_load = open("$log_path/cpu_load.txt", "a")
+    gpu_load = open("$log_path/gpu_load.txt", "a")
+
+    hw = open("$log_path/hw.txt", "a")
+    uname = open("$log_path/uname.txt", "a")
+
+    measurements = open("$log_path/measurements.txt", "a")
+
+    write(cpu_load, readstring(`date`))
+    write(cpu_load, readstring(`ps aux`))
+
+    write(gpu_load, readstring(`date`))
+    write(gpu_load, readstring(`nvidia-smi`))
+
+    write(measurements, "$run_id ")
+    write(cpu_load, readstring(`date`))
+
+    close(cpu)
+    close(gpu)
+
+    close(cpu_load)
+    close(gpu_load)
+
+    close(hw)
+    close(uname)
+
+    close(measurements)
 end
 
 
