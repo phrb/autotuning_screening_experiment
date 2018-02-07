@@ -92,6 +92,17 @@ function generate_experiments(design::Array{Int, 2}, factors::Array{Factor, 1})
     init_dataframe(measurements)
 end
 
+
+function factor_dataframe(factors::Array{Factor, 1})
+    data = DataFrame()
+
+    for name in fieldnames(Factor)
+        data[name] = [getfield(f, name) for f in factors]
+    end
+
+    data
+end
+
 function generate_flags(experiments::NextTable)
     flag_dict = Dict{UInt, String}()
 
@@ -248,8 +259,6 @@ function measure(experiments::DataFrame, id::UInt,
         c = Cmd(`./run.sh`, dir = directory)
         response = @elapsed run(c)
 
-        println(response)
-
         measurement[:response] = response
         measurement[:complete] = true
 
@@ -282,6 +291,10 @@ function run_experiments()
     screening_design = names!(screening_design, factor_names)
 
     CSV.write("./screening_design.csv", screening_design)
+
+    factor_df = factor_dataframe(factors)
+
+    CSV.write("./factors.csv", factor_df)
 
     flags = generate_flags(experiments)
 
