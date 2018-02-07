@@ -270,6 +270,19 @@ function run_experiments()
 
     CSV.write("./experiments.csv", experiments)
 
+    factor_names = [Symbol(f.name) for f in factors]
+
+    i = 1
+    while length(factor_names) != size(design, 2)
+        factor_names = vcat(factor_names, [Symbol(string("dummy", i))])
+        i += 1
+    end
+
+    screening_design = DataFrame(design)
+    screening_design = names!(screening_design, factor_names)
+
+    CSV.write("./screening_design.csv", screening_design)
+
     flags = generate_flags(experiments)
 
     replications = 10
