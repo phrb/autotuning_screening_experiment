@@ -75,7 +75,7 @@ function generate_experiments(design::Array{Int, 2}, factors::Array{Factor, 1})
 
     measurements = Array{Measurement, 1}()
 
-    for i = 1:design_size[2]
+    for i = 1:design_size[1]
         levels = Dict{Symbol, Any}()
 
         for j = 1:factors_length
