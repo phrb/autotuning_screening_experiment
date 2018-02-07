@@ -29,7 +29,7 @@ model		: 48
 model name	: AMD A10-7700K Radeon R7, 10 Compute Cores 4C+6G
 stepping	: 1
 microcode	: 0x6003106
-cpu MHz		: 3400.000
+cpu MHz		: 1900.000
 cache size	: 2048 KB
 physical id	: 0
 siblings	: 4
@@ -85,7 +85,7 @@ model		: 48
 model name	: AMD A10-7700K Radeon R7, 10 Compute Cores 4C+6G
 stepping	: 1
 microcode	: 0x6003106
-cpu MHz		: 1900.000
+cpu MHz		: 3400.000
 cache size	: 2048 KB
 physical id	: 0
 siblings	: 4
