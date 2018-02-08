@@ -24,7 +24,7 @@
         "enumeration_parameters": {
             "--force-load-cache="              : [ "ca", "cg", "cv", "cs", "lu" ],
             "--force-store-cache="             : [ "cg", "cv", "cs" ],
-            "--opt-level="                     : [ "0", "1", "2", "3" ],
+            "--opt-level="                     : [ "2", "1", "0", "3" ],
             "--fmad="                          : [ "true", "false" ],
             "--allow-expensive-optimizations=" : [ "true", "false" ]
         },
