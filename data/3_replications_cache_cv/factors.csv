@@ -1,0 +1,20 @@
+t,name,min,max
+Flag,-Xnvlink --preserve-relocs,on,off
+Flag, --no-align-double,on,off
+Flag, --use_fast_math,on,off
+Enumeration, --ftz=,true,false
+Enumeration, --prec-sqrt=,true,false
+Enumeration, --gpu-architecture=,sm_20,sm_52
+Enumeration, --optimize=,2,3
+Enumeration, --relocatable-device-code=,true,false
+Enumeration, --prec-div=,true,false
+Enumeration,-Xptxas --allow-expensive-optimizations=,true,false
+Enumeration,-Xptxas --fmad=,true,false
+Enumeration,-Xptxas --force-load-cache=,ca,cv
+Enumeration,-Xptxas --opt-level=,2,3
+Enumeration,-Xptxas --force-store-cache=,cg,cs
+Numeric,-Xptxas --maxrregcount=,16,63
+Numeric,dummy1,-1,1
+Numeric,dummy2,-1,1
+Numeric,dummy3,-1,1
+Numeric,dummy4,-1,1
