@@ -14,7 +14,7 @@
             "--ftz="                     : ["true", "false"],
             "--prec-div="                : ["true", "false"],
             "--prec-sqrt="               : ["true", "false"],
-            "--optimize="                : [ "0", "1", "2", "3" ]
+            "--optimize="                : [ "2", "1", "0", "3" ]
         },
         "numeric_parameters": { }
     },
