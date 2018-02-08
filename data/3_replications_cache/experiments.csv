@@ -1,0 +1,21 @@
+dummy3, --use_fast_math,-Xptxas --opt-level=, --gpu-architecture=, --ftz=,-Xptxas --force-store-cache=,-Xptxas --force-load-cache=,-Xptxas --allow-expensive-optimizations=,-Xptxas --fmad=, --optimize=,dummy2,-Xnvlink --preserve-relocs, --relocatable-device-code=, --prec-div=,dummy1,-Xptxas --maxrregcount=,dummy4, --prec-sqrt=, --no-align-double,response,complete,id
+1,off,3,sm_52,false,cs,cg,false,false,3,1,off,false,false,1,63,1,false,off,-1.0,false,2832385055763169752
+-1,on,3,sm_20,true,cs,cg,true,false,3,1,off,true,false,-1,16,-1,true,off,-1.0,false,3180104934000363099
+-1,on,3,sm_52,true,cg,cg,false,false,2,-1,off,false,true,1,16,1,true,on,-1.0,false,5459033650646189885
+1,on,2,sm_20,true,cg,cg,false,false,3,-1,on,true,false,-1,63,1,false,on,-1.0,false,4601229898150430296
+1,on,2,sm_52,false,cs,ca,false,false,2,1,on,false,false,-1,16,-1,true,on,-1.0,false,3272551603729099740
+-1,off,3,sm_20,true,cg,ca,false,true,3,1,on,false,false,1,16,-1,false,on,-1.0,false,11998574794769635484
+-1,on,2,sm_52,false,cg,cg,true,true,3,-1,on,false,false,1,63,-1,true,off,-1.0,false,17434697871689686891
+-1,off,2,sm_52,true,cs,ca,true,false,3,-1,off,false,true,-1,63,-1,false,on,-1.0,false,16844645761357879638
+-1,on,3,sm_52,false,cs,ca,false,true,3,-1,on,true,true,-1,16,1,false,off,-1.0,false,10144606589520683771
+1,off,3,sm_52,false,cg,cg,true,true,2,-1,off,true,false,-1,16,-1,false,on,-1.0,false,1643453506739748464
+-1,off,2,sm_20,false,cg,cg,true,false,2,1,on,false,true,-1,16,1,false,off,-1.0,false,4915531756569767803
+1,off,2,sm_20,false,cg,ca,false,false,3,-1,off,true,true,1,16,-1,true,off,-1.0,false,18183250591116101860
+-1,off,2,sm_52,true,cg,ca,false,true,2,1,off,true,false,-1,63,1,true,off,-1.0,false,4480615701543711457
+1,on,2,sm_20,true,cs,ca,true,true,2,-1,off,false,false,1,16,1,false,off,-1.0,false,16482218504994401748
+1,on,3,sm_20,false,cg,ca,true,true,3,1,off,false,true,-1,63,1,true,on,-1.0,false,5748659537799952519
+1,off,2,sm_52,true,cs,cg,true,true,3,1,on,true,true,1,16,1,true,on,-1.0,false,7929401589367327984
+1,on,3,sm_52,true,cg,ca,true,false,2,1,on,true,true,1,63,-1,false,off,-1.0,false,1262471024641038660
+-1,on,2,sm_20,false,cs,cg,false,true,2,1,off,true,true,1,63,-1,false,on,-1.0,false,6360988710786035579
+-1,off,3,sm_20,false,cs,ca,true,false,2,-1,on,true,false,1,63,1,true,on,-1.0,false,15074698308700351608
+1,off,3,sm_20,true,cs,cg,false,true,2,-1,on,false,true,-1,63,-1,true,off,-1.0,false,7834697392192287997
