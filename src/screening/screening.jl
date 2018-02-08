@@ -139,8 +139,11 @@ function generate_flags(experiments::DataFrame)
 
         flags = string()
 
+        exclude = [:response, :complete, :id, :dummy1,
+                   :dummy2, :dummy3, :dummy4]
+
         for flag in names(row)
-            if flag != :response && flag != :complete && flag != :id
+            if !(flag in exclude)
                 if row[flag][1] == "on"
                     flags = string(flags, flag, " ")
                 elseif row[flag][1] != "off"
@@ -275,17 +278,19 @@ end
 function run_experiments()
     factors = generate_search_space("../parameters/nvcc_flags.json")
     design = generate_design(factors)
+
+    i = 1
+    while length(factors) != size(design, 2)
+        push!(factors, Factor(Numeric, Symbol(string("dummy", i)),
+                              string(-1), string(1)))
+        i += 1
+    end
+
     experiments = generate_experiments(design, factors)
 
     CSV.write("./experiments.csv", experiments)
 
     factor_names = [Symbol(f.name) for f in factors]
-
-    i = 1
-    while length(factor_names) != size(design, 2)
-        factor_names = vcat(factor_names, [Symbol(string("dummy", i))])
-        i += 1
-    end
 
     screening_design = DataFrame(design)
     screening_design = names!(screening_design, factor_names)
