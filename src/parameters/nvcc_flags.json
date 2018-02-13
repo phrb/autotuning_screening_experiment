@@ -30,7 +30,7 @@
         },
         "numeric_parameters": {
             "--maxrregcount=": {
-                "min": 1,
+                "min": 32,
                 "max": 63
             }
         }

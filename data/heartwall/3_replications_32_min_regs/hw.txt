@@ -1,0 +1,383 @@
+venus
+    descrição: Computer
+    largura: 64 bits
+    capacidades: vsyscall32
+  *-core
+       descrição: Motherboard
+       ID físico: 0
+     *-memory
+          descrição: Memória do sistema
+          ID físico: 0
+          tamanho: 8005MiB
+     *-cpu
+          produto: AMD A10-7700K Radeon R7, 10 Compute Cores 4C+6G
+          fabricante: Advanced Micro Devices [AMD]
+          ID físico: 1
+          informações do barramento: cpu@0
+          tamanho: 1900MHz
+          capacidade: 3400MHz
+          largura: 64 bits
+          capacidades: fpu fpu_exception wp vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp x86-64 constant_tsc rep_good nopl nonstop_tsc extd_apicid aperfmperf eagerfpu pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 tce nodeid_msr tbm topoext perfctr_core perfctr_nb bpext cpb hw_pstate vmmcall fsgsbase bmi1 xsaveopt arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold cpufreq
+     *-pci:0
+          descrição: Host bridge
+          produto: Family 15h (Models 30h-3fh) Processor Root Complex
+          fabricante: Advanced Micro Devices, Inc. [AMD]
+          ID físico: 100
+          informações do barramento: pci@0000:00:00.0
+          versão: 00
+          largura: 32 bits
+          clock: 33MHz
+        *-generic DISPONÍVEL
+             descrição: IOMMU
+             produto: Family 15h (Models 30h-3fh) I/O Memory Management Unit
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 0.2
+             informações do barramento: pci@0000:00:00.2
+             versão: 00
+             largura: 32 bits
+             clock: 33MHz
+             capacidades: bus_master cap_list
+             configuração: latency=0
+        *-pci:0
+             descrição: PCI bridge
+             produto: Advanced Micro Devices, Inc. [AMD]
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 2.1
+             informações do barramento: pci@0000:00:02.1
+             versão: 00
+             largura: 32 bits
+             clock: 33MHz
+             capacidades: pci normal_decode bus_master cap_list
+             configuração: driver=pcieport
+             recursos: irq:16 porta de E/S:e000(tamanho=4096) memória:fd000000-fe0fffff porta de E/S:c0000000(tamanho=301989888)
+           *-display
+                descrição: VGA compatible controller
+                produto: GM204 [GeForce GTX 980]
+                fabricante: NVIDIA Corporation
+                ID físico: 0
+                informações do barramento: pci@0000:01:00.0
+                versão: a1
+                largura: 64 bits
+                clock: 33MHz
+                capacidades: vga_controller bus_master cap_list rom
+                configuração: driver=nvidia latency=0
+                recursos: irq:53 memória:fd000000-fdffffff memória:c0000000-cfffffff memória:d0000000-d1ffffff porta de E/S:e000(tamanho=128) memória:fe000000-fe07ffff
+           *-multimedia
+                descrição: Audio device
+                produto: GM204 High Definition Audio Controller
+                fabricante: NVIDIA Corporation
+                ID físico: 0.1
+                informações do barramento: pci@0000:01:00.1
+                versão: a1
+                largura: 32 bits
+                clock: 33MHz
+                capacidades: bus_master cap_list
+                configuração: driver=snd_hda_intel latency=0
+                recursos: irq:52 memória:fe080000-fe083fff
+        *-pci:1
+             descrição: PCI bridge
+             produto: Family 15h (Models 30h-3fh) Processor Root Port
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 3.1
+             informações do barramento: pci@0000:00:03.1
+             versão: 00
+             largura: 32 bits
+             clock: 33MHz
+             capacidades: pci normal_decode bus_master cap_list
+             configuração: driver=pcieport
+             recursos: irq:18 porta de E/S:d000(tamanho=4096) memória:fe200000-fe2fffff porta de E/S:d2100000(tamanho=1048576)
+           *-network
+                descrição: Ethernet interface
+                produto: RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller
+                fabricante: Realtek Semiconductor Co., Ltd.
+                ID físico: 0
+                informações do barramento: pci@0000:02:00.0
+                nome lógico: eth0
+                versão: 0c
+                serial: d8:cb:8a:79:83:c8
+                tamanho: 100Mbit/s
+                capacidade: 1Gbit/s
+                largura: 64 bits
+                clock: 33MHz
+                capacidades: bus_master cap_list ethernet physical tp mii 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+                configuração: autonegotiation=on broadcast=yes driver=r8169 driverversion=2.3LK-NAPI duplex=full firmware=rtl8168g-2_0.0.1 02/06/13 latency=0 link=yes multicast=yes port=MII speed=100Mbit/s
+                recursos: irq:50 porta de E/S:d000(tamanho=256) memória:fe200000-fe200fff memória:d2100000-d2103fff
+        *-pci:2
+             descrição: PCI bridge
+             produto: Family 15h (Models 30h-3fh) Processor Root Port
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 3.2
+             informações do barramento: pci@0000:00:03.2
+             versão: 00
+             largura: 32 bits
+             clock: 33MHz
+             capacidades: pci normal_decode bus_master cap_list
+             configuração: driver=pcieport
+             recursos: irq:18 memória:fe100000-fe1fffff
+           *-usb
+                descrição: USB controller
+                produto: uPD720202 USB 3.0 Host Controller
+                fabricante: Renesas Technology Corp.
+                ID físico: 0
+                informações do barramento: pci@0000:03:00.0
+                versão: 02
+                largura: 64 bits
+                clock: 33MHz
+                capacidades: xhci bus_master cap_list
+                configuração: driver=xhci_hcd latency=0
+                recursos: irq:35 memória:fe100000-fe101fff
+        *-usb:0
+             descrição: USB controller
+             produto: FCH USB XHCI Controller
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 10
+             informações do barramento: pci@0000:00:10.0
+             versão: 09
+             largura: 64 bits
+             clock: 33MHz
+             capacidades: xhci bus_master cap_list
+             configuração: driver=xhci_hcd latency=0
+             recursos: irq:18 memória:fe306000-fe307fff
+        *-usb:1
+             descrição: USB controller
+             produto: FCH USB XHCI Controller
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 10.1
+             informações do barramento: pci@0000:00:10.1
+             versão: 09
+             largura: 64 bits
+             clock: 33MHz
+             capacidades: xhci bus_master cap_list
+             configuração: driver=xhci_hcd latency=0
+             recursos: irq:17 memória:fe304000-fe305fff
+        *-storage
+             descrição: SATA controller
+             produto: FCH SATA Controller [AHCI mode]
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 11
+             informações do barramento: pci@0000:00:11.0
+             versão: 40
+             largura: 32 bits
+             clock: 66MHz
+             capacidades: storage ahci_1.0 bus_master cap_list
+             configuração: driver=ahci latency=32
+             recursos: irq:42 porta de E/S:f040(tamanho=8) porta de E/S:f030(tamanho=4) porta de E/S:f020(tamanho=8) porta de E/S:f010(tamanho=4) porta de E/S:f000(tamanho=16) memória:fe30d000-fe30d7ff
+        *-usb:2
+             descrição: USB controller
+             produto: FCH USB OHCI Controller
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 12
+             informações do barramento: pci@0000:00:12.0
+             versão: 11
+             largura: 32 bits
+             clock: 66MHz
+             capacidades: ohci bus_master
+             configuração: driver=ohci-pci latency=32
+             recursos: irq:18 memória:fe30c000-fe30cfff
+        *-usb:3
+             descrição: USB controller
+             produto: FCH USB EHCI Controller
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 12.2
+             informações do barramento: pci@0000:00:12.2
+             versão: 11
+             largura: 32 bits
+             clock: 66MHz
+             capacidades: ehci bus_master cap_list
+             configuração: driver=ehci-pci latency=32
+             recursos: irq:17 memória:fe30b000-fe30b0ff
+        *-usb:4
+             descrição: USB controller
+             produto: FCH USB OHCI Controller
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 13
+             informações do barramento: pci@0000:00:13.0
+             versão: 11
+             largura: 32 bits
+             clock: 66MHz
+             capacidades: ohci bus_master
+             configuração: driver=ohci-pci latency=32
+             recursos: irq:18 memória:fe30a000-fe30afff
+        *-usb:5
+             descrição: USB controller
+             produto: FCH USB EHCI Controller
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 13.2
+             informações do barramento: pci@0000:00:13.2
+             versão: 11
+             largura: 32 bits
+             clock: 66MHz
+             capacidades: ehci bus_master cap_list
+             configuração: driver=ehci-pci latency=32
+             recursos: irq:17 memória:fe309000-fe3090ff
+        *-serial
+             descrição: SMBus
+             produto: FCH SMBus Controller
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 14
+             informações do barramento: pci@0000:00:14.0
+             versão: 16
+             largura: 32 bits
+             clock: 66MHz
+             configuração: driver=piix4_smbus latency=0
+             recursos: irq:0
+        *-multimedia
+             descrição: Audio device
+             produto: FCH Azalia Controller
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 14.2
+             informações do barramento: pci@0000:00:14.2
+             versão: 01
+             largura: 64 bits
+             clock: 33MHz
+             capacidades: bus_master cap_list
+             configuração: driver=snd_hda_intel latency=32
+             recursos: irq:16 memória:fe300000-fe303fff
+        *-isa
+             descrição: ISA bridge
+             produto: FCH LPC Bridge
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 14.3
+             informações do barramento: pci@0000:00:14.3
+             versão: 11
+             largura: 32 bits
+             clock: 66MHz
+             capacidades: isa bus_master
+             configuração: latency=0
+        *-pci:3
+             descrição: PCI bridge
+             produto: FCH PCI Bridge
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 14.4
+             informações do barramento: pci@0000:00:14.4
+             versão: 40
+             largura: 32 bits
+             clock: 66MHz
+             capacidades: pci subtractive_decode bus_master vga_palette
+        *-usb:6
+             descrição: USB controller
+             produto: FCH USB OHCI Controller
+             fabricante: Advanced Micro Devices, Inc. [AMD]
+             ID físico: 14.5
+             informações do barramento: pci@0000:00:14.5
+             versão: 11
+             largura: 32 bits
+             clock: 66MHz
+             capacidades: ohci bus_master
+             configuração: driver=ohci-pci latency=32
+             recursos: irq:18 memória:fe308000-fe308fff
+     *-pci:1
+          descrição: Host bridge
+          produto: Advanced Micro Devices, Inc. [AMD]
+          fabricante: Advanced Micro Devices, Inc. [AMD]
+          ID físico: 101
+          informações do barramento: pci@0000:00:02.0
+          versão: 00
+          largura: 32 bits
+          clock: 33MHz
+     *-pci:2
+          descrição: Host bridge
+          produto: Advanced Micro Devices, Inc. [AMD]
+          fabricante: Advanced Micro Devices, Inc. [AMD]
+          ID físico: 102
+          informações do barramento: pci@0000:00:03.0
+          versão: 00
+          largura: 32 bits
+          clock: 33MHz
+     *-pci:3
+          descrição: Host bridge
+          produto: Advanced Micro Devices, Inc. [AMD]
+          fabricante: Advanced Micro Devices, Inc. [AMD]
+          ID físico: 103
+          informações do barramento: pci@0000:00:04.0
+          versão: 00
+          largura: 32 bits
+          clock: 33MHz
+     *-pci:4
+          descrição: Host bridge
+          produto: Family 15h (Models 30h-3fh) Processor Function 0
+          fabricante: Advanced Micro Devices, Inc. [AMD]
+          ID físico: 104
+          informações do barramento: pci@0000:00:18.0
+          versão: 00
+          largura: 32 bits
+          clock: 33MHz
+     *-pci:5
+          descrição: Host bridge
+          produto: Family 15h (Models 30h-3fh) Processor Function 1
+          fabricante: Advanced Micro Devices, Inc. [AMD]
+          ID físico: 105
+          informações do barramento: pci@0000:00:18.1
+          versão: 00
+          largura: 32 bits
+          clock: 33MHz
+     *-pci:6
+          descrição: Host bridge
+          produto: Family 15h (Models 30h-3fh) Processor Function 2
+          fabricante: Advanced Micro Devices, Inc. [AMD]
+          ID físico: 106
+          informações do barramento: pci@0000:00:18.2
+          versão: 00
+          largura: 32 bits
+          clock: 33MHz
+     *-pci:7
+          descrição: Host bridge
+          produto: Family 15h (Models 30h-3fh) Processor Function 3
+          fabricante: Advanced Micro Devices, Inc. [AMD]
+          ID físico: 107
+          informações do barramento: pci@0000:00:18.3
+          versão: 00
+          largura: 32 bits
+          clock: 33MHz
+          configuração: driver=k10temp
+          recursos: irq:0
+     *-pci:8
+          descrição: Host bridge
+          produto: Family 15h (Models 30h-3fh) Processor Function 4
+          fabricante: Advanced Micro Devices, Inc. [AMD]
+          ID físico: 108
+          informações do barramento: pci@0000:00:18.4
+          versão: 00
+          largura: 32 bits
+          clock: 33MHz
+          configuração: driver=fam15h_power
+          recursos: irq:0
+     *-pci:9
+          descrição: Host bridge
+          produto: Family 15h (Models 30h-3fh) Processor Function 5
+          fabricante: Advanced Micro Devices, Inc. [AMD]
+          ID físico: 109
+          informações do barramento: pci@0000:00:18.5
+          versão: 00
+          largura: 32 bits
+          clock: 33MHz
+00:00.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 15h (Models 30h-3fh) Processor Root Complex
+00:00.2 IOMMU: Advanced Micro Devices, Inc. [AMD] Family 15h (Models 30h-3fh) I/O Memory Management Unit
+00:02.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Device 1424
+00:02.1 PCI bridge: Advanced Micro Devices, Inc. [AMD] Device 1425
+00:03.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Device 1424
+00:03.1 PCI bridge: Advanced Micro Devices, Inc. [AMD] Family 15h (Models 30h-3fh) Processor Root Port
+00:03.2 PCI bridge: Advanced Micro Devices, Inc. [AMD] Family 15h (Models 30h-3fh) Processor Root Port
+00:04.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Device 1424
+00:10.0 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB XHCI Controller (rev 09)
+00:10.1 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB XHCI Controller (rev 09)
+00:11.0 SATA controller: Advanced Micro Devices, Inc. [AMD] FCH SATA Controller [AHCI mode] (rev 40)
+00:12.0 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB OHCI Controller (rev 11)
+00:12.2 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB EHCI Controller (rev 11)
+00:13.0 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB OHCI Controller (rev 11)
+00:13.2 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB EHCI Controller (rev 11)
+00:14.0 SMBus: Advanced Micro Devices, Inc. [AMD] FCH SMBus Controller (rev 16)
+00:14.2 Audio device: Advanced Micro Devices, Inc. [AMD] FCH Azalia Controller (rev 01)
+00:14.3 ISA bridge: Advanced Micro Devices, Inc. [AMD] FCH LPC Bridge (rev 11)
+00:14.4 PCI bridge: Advanced Micro Devices, Inc. [AMD] FCH PCI Bridge (rev 40)
+00:14.5 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB OHCI Controller (rev 11)
+00:18.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 15h (Models 30h-3fh) Processor Function 0
+00:18.1 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 15h (Models 30h-3fh) Processor Function 1
+00:18.2 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 15h (Models 30h-3fh) Processor Function 2
+00:18.3 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 15h (Models 30h-3fh) Processor Function 3
+00:18.4 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 15h (Models 30h-3fh) Processor Function 4
+00:18.5 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 15h (Models 30h-3fh) Processor Function 5
+01:00.0 VGA compatible controller: NVIDIA Corporation GM204 [GeForce GTX 980] (rev a1)
+01:00.1 Audio device: NVIDIA Corporation GM204 High Definition Audio Controller (rev a1)
+02:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 0c)
+03:00.0 USB controller: Renesas Technology Corp. uPD720202 USB 3.0 Host Controller (rev 02)
