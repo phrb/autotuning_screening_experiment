@@ -22,7 +22,7 @@
         "prefix": "-Xptxas",
         "flags": [],
         "enumeration_parameters": {
-            "--force-load-cache="              : [ "ca", "lu", "cg", "cv", "cs" ],
+            "--force-load-cache="              : [ "ca", "cs", "cg", "cv", "lu" ],
             "--force-store-cache="             : [ "cg", "cv", "cs" ],
             "--opt-level="                     : [ "2", "1", "0", "3" ],
             "--fmad="                          : [ "true", "false" ],
@@ -30,7 +30,7 @@
         },
         "numeric_parameters": {
             "--maxrregcount=": {
-                "min": 16,
+                "min": 1,
                 "max": 63
             }
         }

@@ -1,1 +1,1 @@
-./gaussian -s 4096 -q
+./gaussian -s 2048 -q
