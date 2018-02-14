@@ -244,7 +244,7 @@ function compile_with_flags(flags::String)
     environment = copy(ENV)
     environment["NVCC_FLAGS"] = flags
 
-    directory = "../backprop/"
+    directory = "../needle/"
 
     c = Cmd(`make`, env = environment, dir = directory)
 
@@ -254,7 +254,7 @@ end
 
 function measure(experiments::DataFrame, id::UInt,
                  data::DataFrame, replications::Int)
-    directory = "../backprop/"
+    directory = "../needle/"
 
     for i = 1:replications
         measurement = deepcopy(experiments[experiments[:id] .== id, :])
