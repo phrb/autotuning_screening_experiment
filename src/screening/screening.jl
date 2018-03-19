@@ -181,7 +181,7 @@ function log_state()
     write(cpu, readstring(`lscpu`))
     write(cpu, readstring(`cat /proc/cpuinfo`))
 
-    write(hw, readstring(`lshw`))
+    #write(hw, readstring(`lshw`))
     write(hw, readstring(`lspci`))
 
     write(gpu, readstring(`nvidia-smi`))

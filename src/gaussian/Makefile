@@ -1,5 +1,5 @@
 # CUDA toolkit installation path
-CUDA_DIR = /usr/local/cuda-8.0
+CUDA_DIR = /usr/local/cuda-7.5
 
 # CUDA toolkit libraries
 CUDA_LIB_DIR := $(CUDA_DIR)/lib
@@ -10,7 +10,7 @@ ifeq ($(shell uname -m), x86_64)
 endif
 
 # CUDA SDK installation path
-SDK_DIR = /usr/local/cuda/samples/
+SDK_DIR = /usr/local/cuda-7.5/samples/
 
 
 CC := $(CUDA_DIR)/bin/nvcc
