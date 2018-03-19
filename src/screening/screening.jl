@@ -244,7 +244,7 @@ function compile_with_flags(flags::String)
     environment = copy(ENV)
     environment["NVCC_FLAGS"] = flags
 
-    directory = "../needle/"
+    directory = "../gaussian/"
 
     c = Cmd(`make`, env = environment, dir = directory)
 
@@ -254,11 +254,11 @@ end
 
 function measure(experiments::DataFrame, id::UInt,
                  data::DataFrame, replications::Int)
-    directory = "../needle/"
 
     for i = 1:replications
         measurement = deepcopy(experiments[experiments[:id] .== id, :])
 
+        directory = "../gaussian/"
         c = Cmd(`./run.sh`, dir = directory)
         response = @elapsed run(c)
 
@@ -271,9 +271,6 @@ function measure(experiments::DataFrame, id::UInt,
             append!(data, measurement)
         end
     end
-
-    c = Cmd(`make clean`, dir = directory)
-    run(c)
 
     data
 end
@@ -306,7 +303,7 @@ function run_experiments()
 
     flags = generate_flags(experiments)
 
-    replications = 3
+    replications = 2
 
     data = DataFrame()
 
