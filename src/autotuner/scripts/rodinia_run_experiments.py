@@ -119,7 +119,7 @@ if __name__ == '__main__':
             old_path = os.getcwd()
             os.chdir(args.filename)
             start   = time.time()
-            subprocess.call("./run", shell = True)
+            subprocess.call("./run.sh", shell = True)
             end     = time.time()
             os.chdir(old_path)
 

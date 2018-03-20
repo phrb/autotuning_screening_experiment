@@ -61,7 +61,7 @@ def baseline(program, arguments, logdir, runs, cuda_path):
             old_path = os.getcwd()
             os.chdir(program)
             start   = time.time()
-            subprocess.call("./run", shell = True)
+            subprocess.call("./run.sh", shell = True)
             end     = time.time()
             os.chdir(old_path)
 
