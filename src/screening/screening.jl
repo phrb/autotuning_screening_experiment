@@ -244,7 +244,7 @@ function compile_with_flags(flags::String)
     environment = copy(ENV)
     environment["NVCC_FLAGS"] = flags
 
-    directory = "../gaussian/"
+    directory = "../heartwall/"
 
     c = Cmd(`make`, env = environment, dir = directory)
 
@@ -258,7 +258,7 @@ function measure(experiments::DataFrame, id::UInt,
     for i = 1:replications
         measurement = deepcopy(experiments[experiments[:id] .== id, :])
 
-        directory = "../gaussian/"
+        directory = "../heartwall/"
         c = Cmd(`./run.sh`, dir = directory)
         response = @elapsed run(c)
 
