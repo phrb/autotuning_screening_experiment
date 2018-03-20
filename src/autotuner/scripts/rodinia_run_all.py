@@ -77,7 +77,7 @@ def run(program, steps, arguments, logdir, run_time, runs, benchmark, cuda_path,
             logs = logdir + "/size_" + "'" + str(i) + "'" + "_time_" + str(run_time)
             tune(program, [str(i), arguments], logs, run_time, runs, benchmark, cuda_path)
         if args.tune == False:
-            print "[INFO] Calculating Baselines for -O0, -O1, -O2, -O3."
+            print "[INFO] Computing Baselines for -O0, -O1, -O2, -O3."
             baseline(program, [str(i), arguments], logdir + "/size_" + str(i), benchmark, cuda_path)
             print "[INFO] Baseline Calculation Done."
     print "[INFO] " + program + " Experiments Done."
@@ -94,8 +94,8 @@ benchmark   = 8
 #
 # Rodinia: Gaussian Elimination
 #
-program     = "../rodinia_3.0/cuda/gaussian"
-logdir      = "logs/gaussian"
+program     = "../gaussian"
+logdir      = "log/gaussian"
 arguments   = " "
 steps       = ["default"]
 
@@ -104,8 +104,8 @@ run(program, steps, arguments, logdir, run_time, runs, benchmark, cuda_path, arg
 #
 # Rodinia: Heartwall
 #
-program     = "../rodinia_3.0/cuda/heartwall"
-logdir      = "logs/heartwall"
+program     = "../heartwall"
+logdir      = "log/heartwall"
 arguments   = " "
 steps       = ["default"]
 
@@ -114,8 +114,8 @@ run(program, steps, arguments, logdir, run_time, runs, benchmark, cuda_path, arg
 #
 # Rodinia: Needle
 #
-program     = "../rodinia_3.0/cuda/nw"
-logdir      = "logs/needle"
+program     = "../needle"
+logdir      = "log/needle"
 arguments   = " "
 steps       = ["default"]
 
