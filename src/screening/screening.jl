@@ -303,7 +303,7 @@ function run_experiments()
 
     flags = generate_flags(experiments)
 
-    replications = 2
+    replications = 5
 
     data = DataFrame()
 
