@@ -102,7 +102,7 @@ class NvccFlagsTuner(MeasurementInterface):
         for i in range(evaluations):
             old_path = os.getcwd()
             os.chdir(FILENAME)
-            run_result = self.call_program("./run")
+            run_result = self.call_program("./run.sh")
             os.chdir(old_path)
 
             if run_result['returncode'] != 0:
