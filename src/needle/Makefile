@@ -1,5 +1,5 @@
 # CUDA toolkit installation path
-CUDA_DIR = /usr/local/cuda-7.5
+CUDA_DIR = /usr/local/cuda
 
 # CUDA toolkit libraries
 CUDA_LIB_DIR := $(CUDA_DIR)/lib
