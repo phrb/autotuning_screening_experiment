@@ -87,7 +87,7 @@ def run(program, steps, arguments, logdir, run_time, runs, benchmark, cuda_path,
 #
 args        = argparser.parse_args()
 cuda_path   = args.cuda_path
-run_time    = 120
+run_time    = 5400
 runs        = 1
 benchmark   = 8
 
