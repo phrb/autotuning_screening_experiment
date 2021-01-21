@@ -1,4 +1,4 @@
-using JSON, CSV, DataFrames
+using JSON, CSV, DataFrames, Distributed
 
 include("plackett_burman.jl")
 include("table_utils.jl")
@@ -103,33 +103,33 @@ function factor_dataframe(factors::Array{Factor, 1})
     data
 end
 
-function generate_flags(experiments::NextTable)
-    flag_dict = Dict{UInt, String}()
-
-    for row in experiments
-        flags = string()
-
-        for (flag, value) in zip(keys(row), row)
-            if flag != :response && flag != :complete && flag != :id
-                if value == "on"
-                    flags = string(flags, flag, " ")
-                elseif value != "off"
-                    try
-                        parse(Int, value)
-                    catch ArgumentError
-                        value = string("\"", value, "\"")
-                    end
-
-                    flags = string(flags, flag, value, " ")
-                end                    
-            end
-        end
-
-        flag_dict[row.id] = strip(flags)
-    end
-
-    flag_dict
-end
+# function generate_flags(experiments::NextTable)
+#     flag_dict = Dict{UInt, String}()
+# 
+#     for row in experiments
+#         flags = string()
+# 
+#         for (flag, value) in zip(keys(row), row)
+#             if flag != :response && flag != :complete && flag != :id
+#                 if value == "on"
+#                     flags = string(flags, flag, " ")
+#                 elseif value != "off"
+#                     try
+#                         parse(Int, value)
+#                     catch ArgumentError
+#                         value = string("\"", value, "\"")
+#                     end
+# 
+#                     flags = string(flags, flag, value, " ")
+#                 end                    
+#             end
+#         end
+# 
+#         flag_dict[row.id] = strip(flags)
+#     end
+# 
+#     flag_dict
+# end
 
 function generate_flags(experiments::DataFrame)
     flag_dict = Dict{UInt, String}()
@@ -139,15 +139,15 @@ function generate_flags(experiments::DataFrame)
 
         flags = string()
 
-        exclude = [:response, :complete, :id, :dummy1,
-                   :dummy2, :dummy3, :dummy4]
+        exclude = ["response", "complete", "id", "dummy1",
+                   "dummy2", "dummy3", "dummy4"]
 
         for flag in names(row)
             if !(flag in exclude)
-                if row[flag][1] == "on"
+                if row[flag] == "on"
                     flags = string(flags, flag, " ")
-                elseif row[flag][1] != "off"
-                    value = row[flag][1]
+                elseif row[flag] != "off"
+                    value = row[flag]
 
                     try
                         value = parse(Int, value)
@@ -160,14 +160,18 @@ function generate_flags(experiments::DataFrame)
             end
         end
 
-        flag_dict[row[:id][1]] = strip(flags)
+        flag_dict[row[:id]] = strip(flags)
     end
 
     flag_dict
 end
 
 function log_state()
-    log_path = "../../data"
+    log_path = "../../data/gaussian_titanx"
+    c = Cmd(`mkdir -p $log_path`)
+
+    println(c)
+    run(c)
 
     cpu = open("$log_path/cpu.txt", "a")
     gpu = open("$log_path/gpu.txt", "a")
@@ -178,21 +182,21 @@ function log_state()
     hw = open("$log_path/hw.txt", "a")
     uname = open("$log_path/uname.txt", "a")
 
-    write(cpu, readstring(`lscpu`))
-    write(cpu, readstring(`cat /proc/cpuinfo`))
+    write(cpu, read(`lscpu`, String))
+    write(cpu, read(`cat /proc/cpuinfo`, String))
 
-    write(hw, readstring(`lshw`))
-    write(hw, readstring(`lspci`))
+    write(hw, read(`lshw`, String))
+    write(hw, read(`lspci`, String))
 
-    write(gpu, readstring(`nvidia-smi`))
+    write(gpu, read(`nvidia-smi`, String))
 
-    write(uname, readstring(`uname -a`))
+    write(uname, read(`uname -a`, String))
 
-    write(cpu_load, readstring(`date`))
-    write(cpu_load, readstring(`ps aux`))
+    write(cpu_load, read(`date`, String))
+    write(cpu_load, read(`ps aux`, String))
 
-    write(gpu_load, readstring(`date`))
-    write(gpu_load, readstring(`nvidia-smi`))
+    write(gpu_load, read(`date`, String))
+    write(gpu_load, read(`nvidia-smi`, String))
 
     close(cpu)
     close(gpu)
@@ -205,7 +209,11 @@ function log_state()
 end
 
 function log_state(run_id::UInt)
-    log_path = "../../data"
+    log_path = "../../data/gaussian_titanx"
+    c = Cmd(`mkdir -p $log_path`)
+
+    println(c)
+    run(c)
 
     cpu = open("$log_path/cpu.txt", "a")
     gpu = open("$log_path/gpu.txt", "a")
@@ -218,14 +226,14 @@ function log_state(run_id::UInt)
 
     measurements = open("$log_path/measurements.txt", "a")
 
-    write(cpu_load, readstring(`date`))
-    write(cpu_load, readstring(`ps aux`))
+    write(cpu_load, read(`date`, String))
+    write(cpu_load, read(`ps aux`, String))
 
-    write(gpu_load, readstring(`date`))
-    write(gpu_load, readstring(`nvidia-smi`))
+    write(gpu_load, read(`date`, String))
+    write(gpu_load, read(`nvidia-smi`, String))
 
     write(measurements, "$run_id ")
-    write(measurements, readstring(`date`))
+    write(measurements, read(`date`, String))
 
     close(cpu)
     close(gpu)
@@ -242,13 +250,13 @@ end
 
 function compile_with_flags(flags::String)
     environment = copy(ENV)
-    environment["NVCC_FLAGS"] = flags
+    environment["NVCC_PREPEND_FLAGS"] = flags
 
     directory = "../gaussian/"
 
     c = Cmd(`make`, env = environment, dir = directory)
 
-    println(flags)
+    #println(flags)
     run(c)
 end
 
@@ -281,7 +289,7 @@ function run_experiments()
 
     i = 1
     while length(factors) != size(design, 2)
-        push!(factors, Factor(Numeric, Symbol(string("dummy", i)),
+        push!(factors, Factor(Numeric, string("dummy", i),
                               string(-1), string(1)))
         i += 1
     end

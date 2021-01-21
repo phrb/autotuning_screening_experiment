@@ -72,7 +72,7 @@ function paley(matrix::Matrix{Int})
     prime::Int = dimension[2]
 
     residues_length::Int = 1 + floor((prime - 1) / 2)    
-    residues::Array{Int, 1} = Array{Int, 1}(residues_length)
+    residues::Array{Int, 1} = Array{Int, 1}(undef, residues_length)
 
     residues[1] = 0
     residues[2] = 1
@@ -106,7 +106,7 @@ function plackett_burman(matrix_size::Int)
     # The matrix for the Plackett-Burman design must have
     # 'p + 1' rows and 'p' columns, corresponding to
     # 'p + 1' experiments for 'p' factors.
-    A = Matrix{Int}(p + 1, p)
+    A = Matrix{Int}(undef, p + 1, p)
     A[1, :] = ones(p)
     paley(A)
 end

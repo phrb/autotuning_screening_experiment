@@ -1,1 +1,1 @@
-LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64 ./gaussian -s 2048 -q
+LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64 ./gaussian -s 4096 -q
