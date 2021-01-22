@@ -7,13 +7,13 @@
     },
     "nvcc": {
         "prefix": "",
-        "flags": ["--no-align-double", "--use_fast_math"],
+        "flags": [ "--no-align-double", "--use_fast_math" ],
         "enumeration_parameters": {
             "--gpu-architecture=": ["sm_50", "sm_52"],
-            "--relocatable-device-code=" : ["true", "false"],
-            "--ftz="                     : ["true", "false"],
-            "--prec-div="                : ["true", "false"],
-            "--prec-sqrt="               : ["true", "false"],
+            "--relocatable-device-code=" : [ "true", "false" ],
+            "--ftz="                     : [ "true", "false" ],
+            "--prec-div="                : [ "true", "false" ],
+            "--prec-sqrt="               : [ "true", "false" ],
             "--optimize="                : [ "2", "1", "0", "3" ]
         },
         "numeric_parameters": { }
@@ -22,7 +22,7 @@
         "prefix": "-Xptxas",
         "flags": [],
         "enumeration_parameters": {
-            "--force-load-cache="              : [ "ca", "cs", "cg", "cv", "lu" ],
+            "--force-load-cache="              : [ "cs", "cs", "cv", "lu", "cg"],
             "--force-store-cache="             : [ "cg", "cv", "cs" ],
             "--opt-level="                     : [ "2", "1", "0", "3" ],
             "--fmad="                          : [ "true", "false" ],

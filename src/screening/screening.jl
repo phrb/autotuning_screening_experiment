@@ -166,8 +166,7 @@ function generate_flags(experiments::DataFrame)
     flag_dict
 end
 
-function log_state()
-    log_path = "../../data/gaussian_titanx"
+function log_state(log_path::String)
     c = Cmd(`mkdir -p $log_path`)
 
     println(c)
@@ -208,8 +207,7 @@ function log_state()
     close(uname)
 end
 
-function log_state(run_id::UInt)
-    log_path = "../../data/gaussian_titanx"
+function log_state(run_id::UInt, log_path::String)
     c = Cmd(`mkdir -p $log_path`)
 
     println(c)
@@ -248,11 +246,9 @@ function log_state(run_id::UInt)
 end
 
 
-function compile_with_flags(flags::String)
+function compile_with_flags(flags::String, directory::String)
     environment = copy(ENV)
-    environment["NVCC_PREPEND_FLAGS"] = flags
-
-    directory = "../gaussian/"
+    environment["NVCC_FLAGS"] = flags
 
     c = Cmd(`make`, env = environment, dir = directory)
 
@@ -261,12 +257,12 @@ function compile_with_flags(flags::String)
 end
 
 function measure(experiments::DataFrame, id::UInt,
-                 data::DataFrame, replications::Int)
+                 data::DataFrame, replications::Int,
+                 directory::String)
 
     for i = 1:replications
         measurement = deepcopy(experiments[experiments[:id] .== id, :])
 
-        directory = "../gaussian/"
         c = Cmd(`./run.sh`, dir = directory)
         response = @elapsed run(c)
 
@@ -280,12 +276,18 @@ function measure(experiments::DataFrame, id::UInt,
         end
     end
 
+    c = Cmd(`make clean`, dir = directory)
+    run(c)
+
     data
 end
 
 function run_experiments()
     factors = generate_search_space("../parameters/nvcc_flags.json")
     design = generate_design(factors)
+
+    log_path = "../../data/needle_titanx"
+    directory = "../needle/"
 
     i = 1
     while length(factors) != size(design, 2)
@@ -296,34 +298,34 @@ function run_experiments()
 
     experiments = generate_experiments(design, factors)
 
-    CSV.write("./experiments.csv", experiments)
+    CSV.write("$log_path/experiments.csv", experiments)
 
     factor_names = [Symbol(f.name) for f in factors]
 
     screening_design = DataFrame(design)
     screening_design = names!(screening_design, factor_names)
 
-    CSV.write("./screening_design.csv", screening_design)
+    CSV.write("$log_path/screening_design.csv", screening_design)
 
     factor_df = factor_dataframe(factors)
 
-    CSV.write("./factors.csv", factor_df)
+    CSV.write("$log_path/factors.csv", factor_df)
 
     flags = generate_flags(experiments)
 
-    replications = 2
+    replications = 10
 
     data = DataFrame()
 
-    log_state()
+    log_state(log_path)
 
     for (id, flag) in flags
-        log_state(id)
-        compile_with_flags(flag)
-        data = measure(experiments, id, data, replications)
+        log_state(id, log_path)
+        compile_with_flags(flag, directory)
+        data = measure(experiments, id, data, replications, directory)
     end
 
-    CSV.write("./results.csv", data)
+    CSV.write("$log_path/results.csv", data)
 end
 
 run_experiments()

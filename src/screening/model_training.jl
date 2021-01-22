@@ -134,28 +134,152 @@ function generate_random_2level_design(factors::Array{Factor, 1},
     design = DataFrame()
 
     for f in factors
-        design[f.name] = rand(factor, experiments)
+        design[f.name] = (rand(factor, experiments) .* 2) .- 1
     end
 
     design
 end
 
 function duplicate_rowwise(design::DataFrame, duplicates::Int)
-    indices = collect(1:nrow(design))
-    design[convert(Array, reshape([indices indices]',
-                                  2 * nrow(design),
-                                  1)),
-           :]
+    design[repeat(1:nrow(design), inner = duplicates), :]
 end
 
-design_size = 1500
+function compile_with_flags(flags::String, directory::String)
+    environment = copy(ENV)
+    environment["NVCC_FLAGS"] = flags
 
-factors = generate_search_space("../parameters/nvcc_flags.json")
-design = generate_random_2level_design(factors, design_size)
-experiments = generate_experiments(convert(Array, design), factors)
+    c = Cmd(`make`, env = environment, dir = directory)
 
-screening_design = CSV.read("../../data/gaussian_titanx/screening_design.csv",
-                            DataFrame)
+    #println(flags)
+    run(c)
+end
 
-results = CSV.read("../../data/gaussian_titanx/results.csv",
-                   DataFrame)
+function measure(experiments::DataFrame, id::UInt,
+                 data::DataFrame, replications::Int,
+                directory::String)
+
+    for i = 1:replications
+        measurement = deepcopy(experiments[experiments[:id] .== id, :])
+
+        c = Cmd(`./run.sh`, dir = directory)
+        response = @elapsed run(c)
+
+        measurement[:response] = response
+        measurement[:complete] = true
+
+        if isempty(data)
+            data = measurement
+        else
+            append!(data, measurement)
+        end
+    end
+
+    c = Cmd(`make clean`, dir = directory)
+    run(c)
+
+    data
+end
+
+function generate_flags(experiments::DataFrame)
+    flag_dict = Dict{UInt, String}()
+
+    for i = 1:size(experiments, 1)
+        row = experiments[i, :]
+
+        flags = string()
+
+        exclude = ["response", "complete", "id", "dummy1",
+                   "dummy2", "dummy3", "dummy4"]
+
+        for flag in names(row)
+            if !(flag in exclude)
+                if row[flag] == "on"
+                    flags = string(flags, flag, " ")
+                elseif row[flag] != "off"
+                    value = row[flag]
+
+                    try
+                        value = parse(Int, value)
+                    catch ArgumentError
+                        value = string("\"", value, "\"")
+                    end
+
+                    flags = string(flags, flag, value, " ")
+                end                    
+            end
+        end
+
+        flag_dict[row[:id]] = strip(flags)
+    end
+
+    flag_dict
+end
+
+function run_experiments()
+    design_size = 150000
+    log_path = "../../data/needle_titanx"
+    directory = "../needle/"
+    
+    factors = generate_search_space("../parameters/nvcc_flags.json")
+    screening_design = CSV.read("$log_path/screening_design.csv",
+                                DataFrame)
+    results = CSV.read("$log_path/results.csv",
+                       DataFrame)
+
+    replications = 10
+    model_design = duplicate_rowwise(screening_design, replications)
+
+    println(nrow(model_design))
+    println(nrow(results))
+    model_design[:response] = results[:response]
+
+    screening_model = FormulaTerm(term(:response),
+                                  sum(term.(Symbol.(names(screening_design)))))
+
+    screening_regression = lm(screening_model, model_design)
+
+    random_design = generate_random_2level_design(factors, design_size)
+    random_experiments = generate_experiments(convert(Array, random_design),
+                                              factors)
+
+    model = FormulaTerm(term(:response),
+                        sum(term.(Symbol.(getfield.(factors, :name)))))
+
+    regression = lm(model, model_design)
+
+    random_experiments[!, :prediction] = predict(regression, random_design)
+
+    best_index = findmin(random_experiments[!, :prediction])
+    best_prediction = DataFrame(select(random_experiments,
+                                       Not(:prediction))[best_index[2], :])
+
+    data = DataFrame()
+    flags = generate_flags(best_prediction)
+
+    for (id, flag) in flags
+        compile_with_flags(flag, directory)
+        data = measure(random_experiments, id, data, replications, directory)
+    end
+
+    CSV.write("$log_path/prediction_results.csv", data)
+
+    baseline_data = DataFrame()
+    best_flags = DataFrame(("-Xptxas --opt-level=" => [-1, 1]))
+    best_experiments = generate_experiments(convert(Array, best_flags),
+                                            filter(x -> x.name == "-Xptxas --opt-level=",
+                                                   factors))
+    flags = generate_flags(best_experiments)
+
+    println(flags)
+
+    for (id, flag) in flags
+        compile_with_flags(flag, directory)
+        baseline_data = measure(best_experiments, id,
+                                baseline_data, replications,directory)
+    end
+
+    CSV.write("$log_path/baseline_results.csv", baseline_data)
+end
+
+run_experiments()
+
