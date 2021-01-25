@@ -1,9 +1,9 @@
-import JuliaDB
-import FileIO
+# import JuliaDB
+# import FileIO
 
 @everywhere begin
-    using JuliaDB
-    using FileIO
+    # using JuliaDB
+    # using FileIO
 
     mutable struct Measurement
         parameters::Dict{Symbol, Any}

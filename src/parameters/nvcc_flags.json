@@ -9,7 +9,7 @@
         "prefix": "",
         "flags": [ "--no-align-double", "--use_fast_math" ],
         "enumeration_parameters": {
-            "--gpu-architecture=": ["sm_50", "sm_52"],
+            "--gpu-architecture=": ["sm_80", "sm_86"],
             "--relocatable-device-code=" : [ "true", "false" ],
             "--ftz="                     : [ "true", "false" ],
             "--prec-div="                : [ "true", "false" ],

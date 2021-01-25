@@ -1,0 +1,21 @@
+ --use_fast_math,-Xptxas --opt-level=, --gpu-architecture=, --ftz=,-Xptxas --force-store-cache=,-Xptxas --force-load-cache=,-Xptxas --allow-expensive-optimizations=,-Xptxas --fmad=, --optimize=,-Xnvlink --preserve-relocs, --relocatable-device-code=, --prec-div=,-Xptxas --maxrregcount=, --prec-sqrt=, --no-align-double,response,complete,id
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.1044929,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.079268668,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.078471635,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.077909307,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.078360519,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.077573732,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.07872323,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.078013189,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.078009652,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.079898429,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.079044102,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.078189565,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.077987133,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.078655328,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.079022749,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.078075351,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.078651242,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.079050371,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.078698554,true,4209477202910082318
+on,2,sm_50,true,cg,cg,true,false,3,on,true,false,63,true,off,0.077589596,true,4209477202910082318

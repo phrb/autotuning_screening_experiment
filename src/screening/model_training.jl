@@ -37,7 +37,7 @@ function generate_search_space(filename::String)
                     end
                 elseif parameter_type == "enumeration_parameters"
                     for parameter in json_data[key][parameter_type]
-                        push!(parameters, Factor(Enumeration, 
+                        push!(parameters, Factor(Enumeration,
                                                  "$prefix $(parameter[1])",
                                                  "$(parameter[2][1])",
                                                  "$(parameter[2][end])"))
@@ -56,52 +56,17 @@ function generate_search_space(filename::String)
     return parameters
 end
 
-function generate_flags(experiments::DataFrame)
-    flag_dict = Dict{UInt, String}()
-
-    for i = 1:size(experiments, 1)
-        row = experiments[i, :]
-
-        flags = string()
-
-        exclude = ["response", "complete", "id", "dummy1",
-                   "dummy2", "dummy3", "dummy4"]
-
-        for flag in names(row)
-            if !(flag in exclude)
-                if row[flag] == "on"
-                    flags = string(flags, flag, " ")
-                elseif row[flag] != "off"
-                    value = row[flag]
-
-                    try
-                        value = parse(Int, value)
-                    catch ArgumentError
-                        value = string("\"", value, "\"")
-                    end
-
-                    flags = string(flags, flag, value, " ")
-                end                    
-            end
-        end
-
-        flag_dict[row[:id]] = strip(flags)
-    end
-
-    flag_dict
-end
-
 function init_dataframe(measurements::Array{Measurement, 1})
     data = DataFrame()
 
     for key in keys(measurements[1].parameters)
-        data[key] = [m.parameters[key] for m in measurements]
+        data[!, key] = [m.parameters[key] for m in measurements]
     end
 
-    data[:response] = [m.response for m in measurements]
-    data[:complete] = [m.complete for m in measurements]
-    data[:id] = [m.id for m in measurements]
-    
+    data[!, :response] = [m.response for m in measurements]
+    data[!, :complete] = [m.complete for m in measurements]
+    data[!, :id] = [m.id for m in measurements]
+
     data
 end
 
@@ -134,7 +99,7 @@ function generate_random_2level_design(factors::Array{Factor, 1},
     design = DataFrame()
 
     for f in factors
-        design[f.name] = (rand(factor, experiments) .* 2) .- 1
+        design[!, f.name] = (rand(factor, experiments) .* 2) .- 1
     end
 
     design
@@ -159,13 +124,13 @@ function measure(experiments::DataFrame, id::UInt,
                 directory::String)
 
     for i = 1:replications
-        measurement = deepcopy(experiments[experiments[:id] .== id, :])
+        measurement = deepcopy(experiments[experiments[!, :id] .== id, :])
 
         c = Cmd(`./run.sh`, dir = directory)
         response = @elapsed run(c)
 
-        measurement[:response] = response
-        measurement[:complete] = true
+        measurement[!, :response] = [response]
+        measurement[!, :complete] = [true]
 
         if isempty(data)
             data = measurement
@@ -205,7 +170,7 @@ function generate_flags(experiments::DataFrame)
                     end
 
                     flags = string(flags, flag, value, " ")
-                end                    
+                end
             end
         end
 
@@ -217,21 +182,24 @@ end
 
 function run_experiments()
     design_size = 150000
-    log_path = "../../data/needle_titanx"
-    directory = "../needle/"
-    
+    log_path = "../../data/gaussian_quadrom1200"
+    directory = "../gaussian/"
+
+    c = Cmd(`mkdir -p $log_path`)
+    run(c)
+
     factors = generate_search_space("../parameters/nvcc_flags.json")
     screening_design = CSV.read("$log_path/screening_design.csv",
                                 DataFrame)
     results = CSV.read("$log_path/results.csv",
                        DataFrame)
 
-    replications = 10
+    replications = 20
     model_design = duplicate_rowwise(screening_design, replications)
 
     println(nrow(model_design))
     println(nrow(results))
-    model_design[:response] = results[:response]
+    model_design[!, :response] = results[!, :response]
 
     screening_model = FormulaTerm(term(:response),
                                   sum(term.(Symbol.(names(screening_design)))))
@@ -258,15 +226,25 @@ function run_experiments()
 
     for (id, flag) in flags
         compile_with_flags(flag, directory)
-        data = measure(random_experiments, id, data, replications, directory)
+        data = measure(best_prediction, id, data, replications, directory)
     end
 
     CSV.write("$log_path/prediction_results.csv", data)
 
     baseline_data = DataFrame()
-    best_flags = DataFrame(("-Xptxas --opt-level=" => [-1, 1]))
+    best_flags = DataFrame(("-Xptxas --opt-level=" => [-1, 1],
+                            " --gpu-architecture=" => [-1, 1]))
+
+    println(best_flags)
+
+    println(filter(x -> x.name == "-Xptxas --opt-level=" ||
+                        x.name == " --gpu-architecture=",
+                                                   factors))
+
+    println(getfield.(factors, :name))
     best_experiments = generate_experiments(convert(Array, best_flags),
-                                            filter(x -> x.name == "-Xptxas --opt-level=",
+                                            filter(x -> (x.name == "-Xptxas --opt-level=" ||
+                                                         x.name == " --gpu-architecture="),
                                                    factors))
     flags = generate_flags(best_experiments)
 
@@ -282,4 +260,3 @@ function run_experiments()
 end
 
 run_experiments()
-
