@@ -129,6 +129,9 @@ function measure(experiments::DataFrame, id::UInt,
         c = Cmd(`./run.sh`, dir = directory)
         response = @elapsed run(c)
 
+        println(measurement)
+        println(response)
+
         measurement[!, :response] = [response]
         measurement[!, :complete] = [true]
 
@@ -182,19 +185,19 @@ end
 
 function run_experiments()
     design_size = 150000
-    log_path = "../../data/gaussian_quadrom1200"
-    directory = "../gaussian/"
+    log_path = "../../data/heartwall_quadrom1200"
+    directory = "../heartwall/"
 
     c = Cmd(`mkdir -p $log_path`)
     run(c)
 
-    factors = generate_search_space("../parameters/nvcc_flags.json")
+    factors = generate_search_space("../parameters/gaussian_nvcc_flags.json")
     screening_design = CSV.read("$log_path/screening_design.csv",
                                 DataFrame)
     results = CSV.read("$log_path/results.csv",
                        DataFrame)
 
-    replications = 20
+    replications = 10
     model_design = duplicate_rowwise(screening_design, replications)
 
     println(nrow(model_design))

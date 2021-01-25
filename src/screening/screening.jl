@@ -285,7 +285,7 @@ function measure(experiments::DataFrame, id::UInt,
 end
 
 function run_experiments()
-    factors = generate_search_space("../parameters/nvcc_flags.json")
+    factors = generate_search_space("../parameters/gaussian_nvcc_flags.json")
     design = generate_design(factors)
 
     log_path = "../../data/heartwall_quadrom1200"
@@ -318,7 +318,7 @@ function run_experiments()
 
     flags = generate_flags(experiments)
 
-    replications = 20
+    replications = 10
 
     data = DataFrame()
 

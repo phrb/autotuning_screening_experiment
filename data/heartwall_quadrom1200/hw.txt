@@ -554,3 +554,1673 @@ marvin
 0d:01.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
 0d:04.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
 0e:00.0 USB controller: ASMedia Technology Inc. ASM1042A USB 3.0 Host Controller
+marvin
+    description: Computer
+    width: 64 bits
+    capabilities: smp vsyscall32
+  *-core
+       description: Motherboard
+       physical id: 0
+     *-memory
+          description: System memory
+          physical id: 0
+          size: 32GiB
+     *-cpu
+          product: Intel(R) Xeon(R) CPU E3-1505M v6 @ 3.00GHz
+          vendor: Intel Corp.
+          physical id: 1
+          bus info: cpu@0
+          size: 3GHz
+          width: 64 bits
+          capabilities: fpu fpu_exception wp vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp x86-64 constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d cpufreq
+     *-pci
+          description: Host bridge
+          product: Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers
+          vendor: Intel Corporation
+          physical id: 100
+          bus info: pci@0000:00:00.0
+          version: 05
+          width: 32 bits
+          clock: 33MHz
+          configuration: driver=ie31200_edac
+          resources: irq:0
+        *-pci:0
+             description: PCI bridge
+             product: Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor PCIe Controller (x16)
+             vendor: Intel Corporation
+             physical id: 1
+             bus info: pci@0000:00:01.0
+             version: 05
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:122 ioport:e000(size=4096) memory:ec000000-ed0fffff ioport:c0000000(size=301989888)
+           *-display
+                description: 3D controller
+                product: GM107GLM [Quadro M1200 Mobile]
+                vendor: NVIDIA Corporation
+                physical id: 0
+                bus info: pci@0000:01:00.0
+                version: a2
+                width: 64 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list rom
+                configuration: driver=nvidia latency=0
+                resources: irq:177 memory:ec000000-ecffffff memory:c0000000-cfffffff memory:d0000000-d1ffffff ioport:e000(size=128) memory:ed000000-ed07ffff
+        *-display
+             description: VGA compatible controller
+             product: HD Graphics P630
+             vendor: Intel Corporation
+             physical id: 2
+             bus info: pci@0000:00:02.0
+             version: 04
+             width: 64 bits
+             clock: 33MHz
+             capabilities: vga_controller bus_master cap_list rom
+             configuration: driver=i915 latency=0
+             resources: irq:142 memory:eb000000-ebffffff memory:80000000-8fffffff ioport:f000(size=64) memory:c0000-dffff
+        *-generic:0
+             description: Signal processing controller
+             product: Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Thermal Subsystem
+             vendor: Intel Corporation
+             physical id: 4
+             bus info: pci@0000:00:04.0
+             version: 05
+             width: 64 bits
+             clock: 33MHz
+             capabilities: cap_list
+             configuration: driver=proc_thermal latency=0
+             resources: irq:16 memory:edd20000-edd27fff
+        *-usb
+             description: USB controller
+             product: 100 Series/C230 Series Chipset Family USB 3.0 xHCI Controller
+             vendor: Intel Corporation
+             physical id: 14
+             bus info: pci@0000:00:14.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: xhci bus_master cap_list
+             configuration: driver=xhci_hcd latency=0
+             resources: irq:130 memory:edd10000-edd1ffff
+        *-generic:1
+             description: Signal processing controller
+             product: 100 Series/C230 Series Chipset Family Thermal Subsystem
+             vendor: Intel Corporation
+             physical id: 14.2
+             bus info: pci@0000:00:14.2
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: cap_list
+             configuration: driver=intel_pch_thermal latency=0
+             resources: irq:18 memory:edd39000-edd39fff
+        *-generic:2
+             description: Signal processing controller
+             product: 100 Series/C230 Series Chipset Family Serial IO I2C Controller #0
+             vendor: Intel Corporation
+             physical id: 15
+             bus info: pci@0000:00:15.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=intel-lpss latency=0
+             resources: irq:16 memory:edd38000-edd38fff
+        *-generic:3
+             description: Signal processing controller
+             product: 100 Series/C230 Series Chipset Family Serial IO I2C Controller #1
+             vendor: Intel Corporation
+             physical id: 15.1
+             bus info: pci@0000:00:15.1
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=intel-lpss latency=0
+             resources: irq:17 memory:edd37000-edd37fff
+        *-communication:0
+             description: Communication controller
+             product: 100 Series/C230 Series Chipset Family MEI Controller #1
+             vendor: Intel Corporation
+             physical id: 16
+             bus info: pci@0000:00:16.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=mei_me latency=0
+             resources: irq:128 memory:edd36000-edd36fff
+        *-communication:1
+             description: Serial controller
+             product: 100 Series/C230 Series Chipset Family KT Redirection
+             vendor: Intel Corporation
+             physical id: 16.3
+             bus info: pci@0000:00:16.3
+             version: 31
+             width: 32 bits
+             clock: 66MHz
+             capabilities: 16550 cap_list
+             configuration: driver=serial latency=0
+             resources: irq:19 ioport:f0a0(size=8) memory:edd35000-edd35fff
+        *-sata
+             description: SATA controller
+             product: Q170/Q150/B150/H170/H110/Z170/CM236 Chipset SATA Controller [AHCI Mode]
+             vendor: Intel Corporation
+             physical id: 17
+             bus info: pci@0000:00:17.0
+             version: 31
+             width: 32 bits
+             clock: 66MHz
+             capabilities: sata ahci_1.0 bus_master cap_list
+             configuration: driver=ahci latency=0
+             resources: irq:129 memory:edd30000-edd31fff memory:edd34000-edd340ff ioport:f090(size=8) ioport:f080(size=4) ioport:f060(size=32) memory:edd33000-edd337ff
+        *-pci:1
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #1
+             vendor: Intel Corporation
+             physical id: 1c
+             bus info: pci@0000:00:1c.0
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:123 memory:edc00000-edcfffff
+           *-network
+                description: Wireless interface
+                product: Wireless 8265 / 8275
+                vendor: Intel Corporation
+                physical id: 0
+                bus info: pci@0000:02:00.0
+                logical name: wlp2s0
+                version: 78
+                serial: 5c:5f:67:c7:70:45
+                width: 64 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list ethernet physical wireless
+                configuration: broadcast=yes driver=iwlwifi driverversion=5.10.4-arch2-1 firmware=36.ad812ee0.0 8265-36.ucode ip=192.168.15.24 latency=0 link=yes multicast=yes wireless=IEEE 802.11
+                resources: irq:141 memory:edc00000-edc01fff
+        *-pci:2
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #2
+             vendor: Intel Corporation
+             physical id: 1c.1
+             bus info: pci@0000:00:1c.1
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:124 ioport:d000(size=4096) memory:ed100000-edafffff ioport:d2100000(size=10485760)
+           *-generic
+                description: MMC Host
+                product: RTS525A PCI Express Card Reader
+                vendor: Realtek Semiconductor Co., Ltd.
+                physical id: 0
+                bus info: pci@0000:03:00.0
+                logical name: mmc0
+                version: 01
+                width: 32 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list
+                configuration: driver=rtsx_pci latency=0
+                resources: irq:138 memory:ed100000-ed100fff
+        *-pci:3
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #9
+             vendor: Intel Corporation
+             physical id: 1d
+             bus info: pci@0000:00:1d.0
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:125 memory:edb00000-edbfffff
+           *-nvme
+                description: NVMe device
+                product: PC401 NVMe SK hynix 1TB
+                vendor: SK hynix
+                physical id: 0
+                bus info: pci@0000:04:00.0
+                logical name: /dev/nvme0
+                version: 80003E00
+                serial: EJ83N447811703B3Q
+                width: 64 bits
+                clock: 33MHz
+                capabilities: nvme nvm_express bus_master cap_list
+                configuration: driver=nvme latency=0 nqn=nqn.2014.08.org.nvmexpress:1c5c1c5cEJ83N447811703B3Q   PC401 NVMe SK hynix 1TB state=live
+                resources: irq:16 memory:edb00000-edb03fff
+              *-namespace
+                   description: NVMe disk
+                   physical id: 1
+                   bus info: nvme@0:1
+                   logical name: /dev/nvme0n1
+                   configuration: wwid=eui.ace42e817006bd69
+        *-pci:4
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #13
+             vendor: Intel Corporation
+             physical id: 1d.4
+             bus info: pci@0000:00:1d.4
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:126
+        *-pci:5
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #15
+             vendor: Intel Corporation
+             physical id: 1d.6
+             bus info: pci@0000:00:1d.6
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:127 ioport:2000(size=4096) memory:d4000000-ea0fffff ioport:90000000(size=570425344)
+           *-pci
+                description: PCI bridge
+                product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                vendor: Intel Corporation
+                physical id: 0
+                bus info: pci@0000:06:00.0
+                version: 00
+                width: 32 bits
+                clock: 33MHz
+                capabilities: pci normal_decode bus_master cap_list
+                configuration: driver=pcieport
+                resources: irq:143 memory:d4000000-ea0fffff ioport:90000000(size=570425344)
+              *-pci:0
+                   description: PCI bridge
+                   product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                   vendor: Intel Corporation
+                   physical id: 0
+                   bus info: pci@0000:07:00.0
+                   version: 00
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: pci normal_decode bus_master cap_list
+                   configuration: driver=pcieport
+                   resources: irq:144 memory:ea000000-ea0fffff
+                 *-generic
+                      description: System peripheral
+                      product: DSL6340 Thunderbolt 3 NHI [Alpine Ridge 2C 2015]
+                      vendor: Intel Corporation
+                      physical id: 0
+                      bus info: pci@0000:08:00.0
+                      version: 00
+                      width: 32 bits
+                      clock: 33MHz
+                      capabilities: bus_master cap_list
+                      configuration: driver=thunderbolt latency=0
+                      resources: irq:18 memory:ea000000-ea03ffff memory:ea040000-ea040fff
+              *-pci:1
+                   description: PCI bridge
+                   product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                   vendor: Intel Corporation
+                   physical id: 1
+                   bus info: pci@0000:07:01.0
+                   version: 00
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: pci normal_decode bus_master cap_list
+                   configuration: driver=pcieport
+                   resources: irq:145 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                 *-pci
+                      description: PCI bridge
+                      product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                      vendor: Intel Corporation
+                      physical id: 0
+                      bus info: pci@0000:09:00.0
+                      version: 00
+                      width: 32 bits
+                      clock: 33MHz
+                      capabilities: pci normal_decode bus_master cap_list
+                      configuration: driver=pcieport
+                      resources: irq:163 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                    *-pci:0
+                         description: PCI bridge
+                         product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                         vendor: Intel Corporation
+                         physical id: 1
+                         bus info: pci@0000:0a:01.0
+                         version: 00
+                         width: 32 bits
+                         clock: 33MHz
+                         capabilities: pci normal_decode bus_master cap_list
+                         configuration: driver=pcieport
+                         resources: irq:164
+                    *-pci:1
+                         description: PCI bridge
+                         product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                         vendor: Intel Corporation
+                         physical id: 4
+                         bus info: pci@0000:0a:04.0
+                         version: 00
+                         width: 32 bits
+                         clock: 33MHz
+                         capabilities: pci normal_decode bus_master cap_list
+                         configuration: driver=pcieport
+                         resources: irq:165 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                       *-pci
+                            description: PCI bridge
+                            product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                            vendor: Intel Corporation
+                            physical id: 0
+                            bus info: pci@0000:0c:00.0
+                            version: 00
+                            width: 64 bits
+                            clock: 33MHz
+                            capabilities: pci normal_decode bus_master cap_list
+                            configuration: driver=pcieport
+                            resources: iomemory:1f10-1f0f irq:166 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                          *-pci:0
+                               description: PCI bridge
+                               product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                               vendor: Intel Corporation
+                               physical id: 1
+                               bus info: pci@0000:0d:01.0
+                               version: 00
+                               width: 32 bits
+                               clock: 33MHz
+                               capabilities: pci normal_decode bus_master cap_list
+                               configuration: driver=pcieport
+                               resources: irq:167 memory:d4000000-d40fffff
+                             *-usb
+                                  description: USB controller
+                                  product: ASM1042A USB 3.0 Host Controller
+                                  vendor: ASMedia Technology Inc.
+                                  physical id: 0
+                                  bus info: pci@0000:0e:00.0
+                                  version: 00
+                                  width: 64 bits
+                                  clock: 33MHz
+                                  capabilities: xhci bus_master cap_list
+                                  configuration: driver=xhci_hcd latency=0
+                                  resources: irq:16 memory:d4000000-d4007fff
+                          *-pci:1
+                               description: PCI bridge
+                               product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                               vendor: Intel Corporation
+                               physical id: 4
+                               bus info: pci@0000:0d:04.0
+                               version: 00
+                               width: 32 bits
+                               clock: 33MHz
+                               capabilities: pci normal_decode bus_master cap_list
+                               configuration: driver=pcieport
+                               resources: irq:168 memory:d4100000-e9efffff ioport:90000000(size=570425344)
+              *-pci:2
+                   description: PCI bridge
+                   product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                   vendor: Intel Corporation
+                   physical id: 2
+                   bus info: pci@0000:07:02.0
+                   version: 00
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: pci normal_decode bus_master cap_list
+                   configuration: driver=pcieport
+                   resources: irq:146 memory:e9f00000-e9ffffff
+        *-isa
+             description: ISA bridge
+             product: CM238 Chipset LPC/eSPI Controller
+             vendor: Intel Corporation
+             physical id: 1f
+             bus info: pci@0000:00:1f.0
+             version: 31
+             width: 32 bits
+             clock: 33MHz
+             capabilities: isa bus_master
+             configuration: latency=0
+        *-memory UNCLAIMED
+             description: Memory controller
+             product: 100 Series/C230 Series Chipset Family Power Management Controller
+             vendor: Intel Corporation
+             physical id: 1f.2
+             bus info: pci@0000:00:1f.2
+             version: 31
+             width: 32 bits
+             clock: 33MHz (30.3ns)
+             configuration: latency=0
+             resources: memory:edd2c000-edd2ffff
+        *-multimedia
+             description: Audio device
+             product: CM238 HD Audio Controller
+             vendor: Intel Corporation
+             physical id: 1f.3
+             bus info: pci@0000:00:1f.3
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=snd_hda_intel latency=32
+             resources: irq:17 memory:edd28000-edd2bfff memory:edd00000-edd0ffff
+        *-serial
+             description: SMBus
+             product: 100 Series/C230 Series Chipset Family SMBus
+             vendor: Intel Corporation
+             physical id: 1f.4
+             bus info: pci@0000:00:1f.4
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             configuration: driver=i801_smbus latency=0
+             resources: irq:16 memory:edd32000-edd320ff ioport:f040(size=32)
+     *-pnp00:00
+          product: Motherboard registers
+          physical id: 2
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:01
+          product: Motherboard registers
+          physical id: 3
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:02
+          product: AT Real-Time Clock
+          physical id: 4
+          capabilities: pnp
+          configuration: driver=rtc_cmos
+     *-pnp00:03
+          product: PnP device INT3f0d
+          vendor: Interphase Corporation
+          physical id: 5
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:04
+          product: IBM Enhanced keyboard controller (101/2-key)
+          physical id: 6
+          capabilities: pnp
+          configuration: driver=i8042 kbd
+     *-pnp00:05
+          product: PnP device DLL07bf
+          vendor: Dell Inc
+          physical id: 7
+          capabilities: pnp
+          configuration: driver=i8042 aux
+     *-pnp00:06
+          product: Motherboard registers
+          physical id: 8
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:07
+          product: Motherboard registers
+          physical id: 9
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:08
+          product: Motherboard registers
+          physical id: a
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:09
+          product: Motherboard registers
+          physical id: b
+          capabilities: pnp
+          configuration: driver=system
+  *-network
+       description: Ethernet interface
+       physical id: 1
+       bus info: usb@4:1.2
+       logical name: enp14s0u1u2
+       serial: 10:65:30:a6:48:b8
+       size: 10Mbit/s
+       capacity: 1Gbit/s
+       capabilities: ethernet physical tp mii 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=r8152 driverversion=v1.11.11 duplex=half firmware=rtl8153a-3 v2 02/07/20 link=no multicast=yes port=MII speed=10Mbit/s
+00:00.0 Host bridge: Intel Corporation Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers (rev 05)
+00:01.0 PCI bridge: Intel Corporation Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor PCIe Controller (x16) (rev 05)
+00:02.0 VGA compatible controller: Intel Corporation HD Graphics P630 (rev 04)
+00:04.0 Signal processing controller: Intel Corporation Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Thermal Subsystem (rev 05)
+00:14.0 USB controller: Intel Corporation 100 Series/C230 Series Chipset Family USB 3.0 xHCI Controller (rev 31)
+00:14.2 Signal processing controller: Intel Corporation 100 Series/C230 Series Chipset Family Thermal Subsystem (rev 31)
+00:15.0 Signal processing controller: Intel Corporation 100 Series/C230 Series Chipset Family Serial IO I2C Controller #0 (rev 31)
+00:15.1 Signal processing controller: Intel Corporation 100 Series/C230 Series Chipset Family Serial IO I2C Controller #1 (rev 31)
+00:16.0 Communication controller: Intel Corporation 100 Series/C230 Series Chipset Family MEI Controller #1 (rev 31)
+00:16.3 Serial controller: Intel Corporation 100 Series/C230 Series Chipset Family KT Redirection (rev 31)
+00:17.0 SATA controller: Intel Corporation Q170/Q150/B150/H170/H110/Z170/CM236 Chipset SATA Controller [AHCI Mode] (rev 31)
+00:1c.0 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #1 (rev f1)
+00:1c.1 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #2 (rev f1)
+00:1d.0 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #9 (rev f1)
+00:1d.4 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #13 (rev f1)
+00:1d.6 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #15 (rev f1)
+00:1f.0 ISA bridge: Intel Corporation CM238 Chipset LPC/eSPI Controller (rev 31)
+00:1f.2 Memory controller: Intel Corporation 100 Series/C230 Series Chipset Family Power Management Controller (rev 31)
+00:1f.3 Audio device: Intel Corporation CM238 HD Audio Controller (rev 31)
+00:1f.4 SMBus: Intel Corporation 100 Series/C230 Series Chipset Family SMBus (rev 31)
+01:00.0 3D controller: NVIDIA Corporation GM107GLM [Quadro M1200 Mobile] (rev a2)
+02:00.0 Network controller: Intel Corporation Wireless 8265 / 8275 (rev 78)
+03:00.0 Unassigned class [ff00]: Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader (rev 01)
+04:00.0 Non-Volatile memory controller: SK hynix Device 1527
+06:00.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+07:00.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+07:01.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+07:02.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+08:00.0 System peripheral: Intel Corporation DSL6340 Thunderbolt 3 NHI [Alpine Ridge 2C 2015]
+09:00.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0a:01.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0a:04.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0c:00.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0d:01.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0d:04.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0e:00.0 USB controller: ASMedia Technology Inc. ASM1042A USB 3.0 Host Controller
+marvin
+    description: Computer
+    width: 64 bits
+    capabilities: smp vsyscall32
+  *-core
+       description: Motherboard
+       physical id: 0
+     *-memory
+          description: System memory
+          physical id: 0
+          size: 32GiB
+     *-cpu
+          product: Intel(R) Xeon(R) CPU E3-1505M v6 @ 3.00GHz
+          vendor: Intel Corp.
+          physical id: 1
+          bus info: cpu@0
+          size: 2989MHz
+          capacity: 3GHz
+          width: 64 bits
+          capabilities: fpu fpu_exception wp vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp x86-64 constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d cpufreq
+     *-pci
+          description: Host bridge
+          product: Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers
+          vendor: Intel Corporation
+          physical id: 100
+          bus info: pci@0000:00:00.0
+          version: 05
+          width: 32 bits
+          clock: 33MHz
+          configuration: driver=ie31200_edac
+          resources: irq:0
+        *-pci:0
+             description: PCI bridge
+             product: Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor PCIe Controller (x16)
+             vendor: Intel Corporation
+             physical id: 1
+             bus info: pci@0000:00:01.0
+             version: 05
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:122 ioport:e000(size=4096) memory:ec000000-ed0fffff ioport:c0000000(size=301989888)
+           *-display
+                description: 3D controller
+                product: GM107GLM [Quadro M1200 Mobile]
+                vendor: NVIDIA Corporation
+                physical id: 0
+                bus info: pci@0000:01:00.0
+                version: a2
+                width: 64 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list rom
+                configuration: driver=nvidia latency=0
+                resources: irq:177 memory:ec000000-ecffffff memory:c0000000-cfffffff memory:d0000000-d1ffffff ioport:e000(size=128) memory:ed000000-ed07ffff
+        *-display
+             description: VGA compatible controller
+             product: HD Graphics P630
+             vendor: Intel Corporation
+             physical id: 2
+             bus info: pci@0000:00:02.0
+             version: 04
+             width: 64 bits
+             clock: 33MHz
+             capabilities: vga_controller bus_master cap_list rom
+             configuration: driver=i915 latency=0
+             resources: irq:142 memory:eb000000-ebffffff memory:80000000-8fffffff ioport:f000(size=64) memory:c0000-dffff
+        *-generic:0
+             description: Signal processing controller
+             product: Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Thermal Subsystem
+             vendor: Intel Corporation
+             physical id: 4
+             bus info: pci@0000:00:04.0
+             version: 05
+             width: 64 bits
+             clock: 33MHz
+             capabilities: cap_list
+             configuration: driver=proc_thermal latency=0
+             resources: irq:16 memory:edd20000-edd27fff
+        *-usb
+             description: USB controller
+             product: 100 Series/C230 Series Chipset Family USB 3.0 xHCI Controller
+             vendor: Intel Corporation
+             physical id: 14
+             bus info: pci@0000:00:14.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: xhci bus_master cap_list
+             configuration: driver=xhci_hcd latency=0
+             resources: irq:130 memory:edd10000-edd1ffff
+        *-generic:1
+             description: Signal processing controller
+             product: 100 Series/C230 Series Chipset Family Thermal Subsystem
+             vendor: Intel Corporation
+             physical id: 14.2
+             bus info: pci@0000:00:14.2
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: cap_list
+             configuration: driver=intel_pch_thermal latency=0
+             resources: irq:18 memory:edd39000-edd39fff
+        *-generic:2
+             description: Signal processing controller
+             product: 100 Series/C230 Series Chipset Family Serial IO I2C Controller #0
+             vendor: Intel Corporation
+             physical id: 15
+             bus info: pci@0000:00:15.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=intel-lpss latency=0
+             resources: irq:16 memory:edd38000-edd38fff
+        *-generic:3
+             description: Signal processing controller
+             product: 100 Series/C230 Series Chipset Family Serial IO I2C Controller #1
+             vendor: Intel Corporation
+             physical id: 15.1
+             bus info: pci@0000:00:15.1
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=intel-lpss latency=0
+             resources: irq:17 memory:edd37000-edd37fff
+        *-communication:0
+             description: Communication controller
+             product: 100 Series/C230 Series Chipset Family MEI Controller #1
+             vendor: Intel Corporation
+             physical id: 16
+             bus info: pci@0000:00:16.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=mei_me latency=0
+             resources: irq:128 memory:edd36000-edd36fff
+        *-communication:1
+             description: Serial controller
+             product: 100 Series/C230 Series Chipset Family KT Redirection
+             vendor: Intel Corporation
+             physical id: 16.3
+             bus info: pci@0000:00:16.3
+             version: 31
+             width: 32 bits
+             clock: 66MHz
+             capabilities: 16550 cap_list
+             configuration: driver=serial latency=0
+             resources: irq:19 ioport:f0a0(size=8) memory:edd35000-edd35fff
+        *-sata
+             description: SATA controller
+             product: Q170/Q150/B150/H170/H110/Z170/CM236 Chipset SATA Controller [AHCI Mode]
+             vendor: Intel Corporation
+             physical id: 17
+             bus info: pci@0000:00:17.0
+             version: 31
+             width: 32 bits
+             clock: 66MHz
+             capabilities: sata ahci_1.0 bus_master cap_list
+             configuration: driver=ahci latency=0
+             resources: irq:129 memory:edd30000-edd31fff memory:edd34000-edd340ff ioport:f090(size=8) ioport:f080(size=4) ioport:f060(size=32) memory:edd33000-edd337ff
+        *-pci:1
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #1
+             vendor: Intel Corporation
+             physical id: 1c
+             bus info: pci@0000:00:1c.0
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:123 memory:edc00000-edcfffff
+           *-network
+                description: Wireless interface
+                product: Wireless 8265 / 8275
+                vendor: Intel Corporation
+                physical id: 0
+                bus info: pci@0000:02:00.0
+                logical name: wlp2s0
+                version: 78
+                serial: 5c:5f:67:c7:70:45
+                width: 64 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list ethernet physical wireless
+                configuration: broadcast=yes driver=iwlwifi driverversion=5.10.4-arch2-1 firmware=36.ad812ee0.0 8265-36.ucode ip=192.168.15.24 latency=0 link=yes multicast=yes wireless=IEEE 802.11
+                resources: irq:141 memory:edc00000-edc01fff
+        *-pci:2
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #2
+             vendor: Intel Corporation
+             physical id: 1c.1
+             bus info: pci@0000:00:1c.1
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:124 ioport:d000(size=4096) memory:ed100000-edafffff ioport:d2100000(size=10485760)
+           *-generic
+                description: MMC Host
+                product: RTS525A PCI Express Card Reader
+                vendor: Realtek Semiconductor Co., Ltd.
+                physical id: 0
+                bus info: pci@0000:03:00.0
+                logical name: mmc0
+                version: 01
+                width: 32 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list
+                configuration: driver=rtsx_pci latency=0
+                resources: irq:138 memory:ed100000-ed100fff
+        *-pci:3
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #9
+             vendor: Intel Corporation
+             physical id: 1d
+             bus info: pci@0000:00:1d.0
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:125 memory:edb00000-edbfffff
+           *-nvme
+                description: NVMe device
+                product: PC401 NVMe SK hynix 1TB
+                vendor: SK hynix
+                physical id: 0
+                bus info: pci@0000:04:00.0
+                logical name: /dev/nvme0
+                version: 80003E00
+                serial: EJ83N447811703B3Q
+                width: 64 bits
+                clock: 33MHz
+                capabilities: nvme nvm_express bus_master cap_list
+                configuration: driver=nvme latency=0 nqn=nqn.2014.08.org.nvmexpress:1c5c1c5cEJ83N447811703B3Q   PC401 NVMe SK hynix 1TB state=live
+                resources: irq:16 memory:edb00000-edb03fff
+              *-namespace
+                   description: NVMe disk
+                   physical id: 1
+                   bus info: nvme@0:1
+                   logical name: /dev/nvme0n1
+                   configuration: wwid=eui.ace42e817006bd69
+        *-pci:4
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #13
+             vendor: Intel Corporation
+             physical id: 1d.4
+             bus info: pci@0000:00:1d.4
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:126
+        *-pci:5
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #15
+             vendor: Intel Corporation
+             physical id: 1d.6
+             bus info: pci@0000:00:1d.6
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:127 ioport:2000(size=4096) memory:d4000000-ea0fffff ioport:90000000(size=570425344)
+           *-pci
+                description: PCI bridge
+                product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                vendor: Intel Corporation
+                physical id: 0
+                bus info: pci@0000:06:00.0
+                version: 00
+                width: 32 bits
+                clock: 33MHz
+                capabilities: pci normal_decode bus_master cap_list
+                configuration: driver=pcieport
+                resources: irq:143 memory:d4000000-ea0fffff ioport:90000000(size=570425344)
+              *-pci:0
+                   description: PCI bridge
+                   product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                   vendor: Intel Corporation
+                   physical id: 0
+                   bus info: pci@0000:07:00.0
+                   version: 00
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: pci normal_decode bus_master cap_list
+                   configuration: driver=pcieport
+                   resources: irq:144 memory:ea000000-ea0fffff
+                 *-generic
+                      description: System peripheral
+                      product: DSL6340 Thunderbolt 3 NHI [Alpine Ridge 2C 2015]
+                      vendor: Intel Corporation
+                      physical id: 0
+                      bus info: pci@0000:08:00.0
+                      version: 00
+                      width: 32 bits
+                      clock: 33MHz
+                      capabilities: bus_master cap_list
+                      configuration: driver=thunderbolt latency=0
+                      resources: irq:18 memory:ea000000-ea03ffff memory:ea040000-ea040fff
+              *-pci:1
+                   description: PCI bridge
+                   product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                   vendor: Intel Corporation
+                   physical id: 1
+                   bus info: pci@0000:07:01.0
+                   version: 00
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: pci normal_decode bus_master cap_list
+                   configuration: driver=pcieport
+                   resources: irq:145 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                 *-pci
+                      description: PCI bridge
+                      product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                      vendor: Intel Corporation
+                      physical id: 0
+                      bus info: pci@0000:09:00.0
+                      version: 00
+                      width: 32 bits
+                      clock: 33MHz
+                      capabilities: pci normal_decode bus_master cap_list
+                      configuration: driver=pcieport
+                      resources: irq:163 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                    *-pci:0
+                         description: PCI bridge
+                         product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                         vendor: Intel Corporation
+                         physical id: 1
+                         bus info: pci@0000:0a:01.0
+                         version: 00
+                         width: 32 bits
+                         clock: 33MHz
+                         capabilities: pci normal_decode bus_master cap_list
+                         configuration: driver=pcieport
+                         resources: irq:164
+                    *-pci:1
+                         description: PCI bridge
+                         product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                         vendor: Intel Corporation
+                         physical id: 4
+                         bus info: pci@0000:0a:04.0
+                         version: 00
+                         width: 32 bits
+                         clock: 33MHz
+                         capabilities: pci normal_decode bus_master cap_list
+                         configuration: driver=pcieport
+                         resources: irq:165 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                       *-pci
+                            description: PCI bridge
+                            product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                            vendor: Intel Corporation
+                            physical id: 0
+                            bus info: pci@0000:0c:00.0
+                            version: 00
+                            width: 64 bits
+                            clock: 33MHz
+                            capabilities: pci normal_decode bus_master cap_list
+                            configuration: driver=pcieport
+                            resources: iomemory:1f10-1f0f irq:166 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                          *-pci:0
+                               description: PCI bridge
+                               product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                               vendor: Intel Corporation
+                               physical id: 1
+                               bus info: pci@0000:0d:01.0
+                               version: 00
+                               width: 32 bits
+                               clock: 33MHz
+                               capabilities: pci normal_decode bus_master cap_list
+                               configuration: driver=pcieport
+                               resources: irq:167 memory:d4000000-d40fffff
+                             *-usb
+                                  description: USB controller
+                                  product: ASM1042A USB 3.0 Host Controller
+                                  vendor: ASMedia Technology Inc.
+                                  physical id: 0
+                                  bus info: pci@0000:0e:00.0
+                                  version: 00
+                                  width: 64 bits
+                                  clock: 33MHz
+                                  capabilities: xhci bus_master cap_list
+                                  configuration: driver=xhci_hcd latency=0
+                                  resources: irq:16 memory:d4000000-d4007fff
+                          *-pci:1
+                               description: PCI bridge
+                               product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                               vendor: Intel Corporation
+                               physical id: 4
+                               bus info: pci@0000:0d:04.0
+                               version: 00
+                               width: 32 bits
+                               clock: 33MHz
+                               capabilities: pci normal_decode bus_master cap_list
+                               configuration: driver=pcieport
+                               resources: irq:168 memory:d4100000-e9efffff ioport:90000000(size=570425344)
+              *-pci:2
+                   description: PCI bridge
+                   product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                   vendor: Intel Corporation
+                   physical id: 2
+                   bus info: pci@0000:07:02.0
+                   version: 00
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: pci normal_decode bus_master cap_list
+                   configuration: driver=pcieport
+                   resources: irq:146 memory:e9f00000-e9ffffff
+        *-isa
+             description: ISA bridge
+             product: CM238 Chipset LPC/eSPI Controller
+             vendor: Intel Corporation
+             physical id: 1f
+             bus info: pci@0000:00:1f.0
+             version: 31
+             width: 32 bits
+             clock: 33MHz
+             capabilities: isa bus_master
+             configuration: latency=0
+        *-memory UNCLAIMED
+             description: Memory controller
+             product: 100 Series/C230 Series Chipset Family Power Management Controller
+             vendor: Intel Corporation
+             physical id: 1f.2
+             bus info: pci@0000:00:1f.2
+             version: 31
+             width: 32 bits
+             clock: 33MHz (30.3ns)
+             configuration: latency=0
+             resources: memory:edd2c000-edd2ffff
+        *-multimedia
+             description: Audio device
+             product: CM238 HD Audio Controller
+             vendor: Intel Corporation
+             physical id: 1f.3
+             bus info: pci@0000:00:1f.3
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=snd_hda_intel latency=32
+             resources: irq:17 memory:edd28000-edd2bfff memory:edd00000-edd0ffff
+        *-serial
+             description: SMBus
+             product: 100 Series/C230 Series Chipset Family SMBus
+             vendor: Intel Corporation
+             physical id: 1f.4
+             bus info: pci@0000:00:1f.4
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             configuration: driver=i801_smbus latency=0
+             resources: irq:16 memory:edd32000-edd320ff ioport:f040(size=32)
+     *-pnp00:00
+          product: Motherboard registers
+          physical id: 2
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:01
+          product: Motherboard registers
+          physical id: 3
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:02
+          product: AT Real-Time Clock
+          physical id: 4
+          capabilities: pnp
+          configuration: driver=rtc_cmos
+     *-pnp00:03
+          product: PnP device INT3f0d
+          vendor: Interphase Corporation
+          physical id: 5
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:04
+          product: IBM Enhanced keyboard controller (101/2-key)
+          physical id: 6
+          capabilities: pnp
+          configuration: driver=i8042 kbd
+     *-pnp00:05
+          product: PnP device DLL07bf
+          vendor: Dell Inc
+          physical id: 7
+          capabilities: pnp
+          configuration: driver=i8042 aux
+     *-pnp00:06
+          product: Motherboard registers
+          physical id: 8
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:07
+          product: Motherboard registers
+          physical id: 9
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:08
+          product: Motherboard registers
+          physical id: a
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:09
+          product: Motherboard registers
+          physical id: b
+          capabilities: pnp
+          configuration: driver=system
+  *-network
+       description: Ethernet interface
+       physical id: 1
+       bus info: usb@4:1.2
+       logical name: enp14s0u1u2
+       serial: 10:65:30:a6:48:b8
+       size: 10Mbit/s
+       capacity: 1Gbit/s
+       capabilities: ethernet physical tp mii 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=r8152 driverversion=v1.11.11 duplex=half firmware=rtl8153a-3 v2 02/07/20 link=no multicast=yes port=MII speed=10Mbit/s
+00:00.0 Host bridge: Intel Corporation Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers (rev 05)
+00:01.0 PCI bridge: Intel Corporation Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor PCIe Controller (x16) (rev 05)
+00:02.0 VGA compatible controller: Intel Corporation HD Graphics P630 (rev 04)
+00:04.0 Signal processing controller: Intel Corporation Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Thermal Subsystem (rev 05)
+00:14.0 USB controller: Intel Corporation 100 Series/C230 Series Chipset Family USB 3.0 xHCI Controller (rev 31)
+00:14.2 Signal processing controller: Intel Corporation 100 Series/C230 Series Chipset Family Thermal Subsystem (rev 31)
+00:15.0 Signal processing controller: Intel Corporation 100 Series/C230 Series Chipset Family Serial IO I2C Controller #0 (rev 31)
+00:15.1 Signal processing controller: Intel Corporation 100 Series/C230 Series Chipset Family Serial IO I2C Controller #1 (rev 31)
+00:16.0 Communication controller: Intel Corporation 100 Series/C230 Series Chipset Family MEI Controller #1 (rev 31)
+00:16.3 Serial controller: Intel Corporation 100 Series/C230 Series Chipset Family KT Redirection (rev 31)
+00:17.0 SATA controller: Intel Corporation Q170/Q150/B150/H170/H110/Z170/CM236 Chipset SATA Controller [AHCI Mode] (rev 31)
+00:1c.0 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #1 (rev f1)
+00:1c.1 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #2 (rev f1)
+00:1d.0 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #9 (rev f1)
+00:1d.4 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #13 (rev f1)
+00:1d.6 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #15 (rev f1)
+00:1f.0 ISA bridge: Intel Corporation CM238 Chipset LPC/eSPI Controller (rev 31)
+00:1f.2 Memory controller: Intel Corporation 100 Series/C230 Series Chipset Family Power Management Controller (rev 31)
+00:1f.3 Audio device: Intel Corporation CM238 HD Audio Controller (rev 31)
+00:1f.4 SMBus: Intel Corporation 100 Series/C230 Series Chipset Family SMBus (rev 31)
+01:00.0 3D controller: NVIDIA Corporation GM107GLM [Quadro M1200 Mobile] (rev a2)
+02:00.0 Network controller: Intel Corporation Wireless 8265 / 8275 (rev 78)
+03:00.0 Unassigned class [ff00]: Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader (rev 01)
+04:00.0 Non-Volatile memory controller: SK hynix Device 1527
+06:00.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+07:00.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+07:01.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+07:02.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+08:00.0 System peripheral: Intel Corporation DSL6340 Thunderbolt 3 NHI [Alpine Ridge 2C 2015]
+09:00.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0a:01.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0a:04.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0c:00.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0d:01.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0d:04.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0e:00.0 USB controller: ASMedia Technology Inc. ASM1042A USB 3.0 Host Controller
+marvin
+    description: Computer
+    width: 64 bits
+    capabilities: smp vsyscall32
+  *-core
+       description: Motherboard
+       physical id: 0
+     *-memory
+          description: System memory
+          physical id: 0
+          size: 32GiB
+     *-cpu
+          product: Intel(R) Xeon(R) CPU E3-1505M v6 @ 3.00GHz
+          vendor: Intel Corp.
+          physical id: 1
+          bus info: cpu@0
+          size: 3GHz
+          capacity: 3GHz
+          width: 64 bits
+          capabilities: fpu fpu_exception wp vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp x86-64 constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d cpufreq
+     *-pci
+          description: Host bridge
+          product: Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers
+          vendor: Intel Corporation
+          physical id: 100
+          bus info: pci@0000:00:00.0
+          version: 05
+          width: 32 bits
+          clock: 33MHz
+          configuration: driver=ie31200_edac
+          resources: irq:0
+        *-pci:0
+             description: PCI bridge
+             product: Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor PCIe Controller (x16)
+             vendor: Intel Corporation
+             physical id: 1
+             bus info: pci@0000:00:01.0
+             version: 05
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:122 ioport:e000(size=4096) memory:ec000000-ed0fffff ioport:c0000000(size=301989888)
+           *-display
+                description: 3D controller
+                product: GM107GLM [Quadro M1200 Mobile]
+                vendor: NVIDIA Corporation
+                physical id: 0
+                bus info: pci@0000:01:00.0
+                version: a2
+                width: 64 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list rom
+                configuration: driver=nvidia latency=0
+                resources: irq:177 memory:ec000000-ecffffff memory:c0000000-cfffffff memory:d0000000-d1ffffff ioport:e000(size=128) memory:ed000000-ed07ffff
+        *-display
+             description: VGA compatible controller
+             product: HD Graphics P630
+             vendor: Intel Corporation
+             physical id: 2
+             bus info: pci@0000:00:02.0
+             version: 04
+             width: 64 bits
+             clock: 33MHz
+             capabilities: vga_controller bus_master cap_list rom
+             configuration: driver=i915 latency=0
+             resources: irq:142 memory:eb000000-ebffffff memory:80000000-8fffffff ioport:f000(size=64) memory:c0000-dffff
+        *-generic:0
+             description: Signal processing controller
+             product: Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Thermal Subsystem
+             vendor: Intel Corporation
+             physical id: 4
+             bus info: pci@0000:00:04.0
+             version: 05
+             width: 64 bits
+             clock: 33MHz
+             capabilities: cap_list
+             configuration: driver=proc_thermal latency=0
+             resources: irq:16 memory:edd20000-edd27fff
+        *-usb
+             description: USB controller
+             product: 100 Series/C230 Series Chipset Family USB 3.0 xHCI Controller
+             vendor: Intel Corporation
+             physical id: 14
+             bus info: pci@0000:00:14.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: xhci bus_master cap_list
+             configuration: driver=xhci_hcd latency=0
+             resources: irq:130 memory:edd10000-edd1ffff
+        *-generic:1
+             description: Signal processing controller
+             product: 100 Series/C230 Series Chipset Family Thermal Subsystem
+             vendor: Intel Corporation
+             physical id: 14.2
+             bus info: pci@0000:00:14.2
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: cap_list
+             configuration: driver=intel_pch_thermal latency=0
+             resources: irq:18 memory:edd39000-edd39fff
+        *-generic:2
+             description: Signal processing controller
+             product: 100 Series/C230 Series Chipset Family Serial IO I2C Controller #0
+             vendor: Intel Corporation
+             physical id: 15
+             bus info: pci@0000:00:15.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=intel-lpss latency=0
+             resources: irq:16 memory:edd38000-edd38fff
+        *-generic:3
+             description: Signal processing controller
+             product: 100 Series/C230 Series Chipset Family Serial IO I2C Controller #1
+             vendor: Intel Corporation
+             physical id: 15.1
+             bus info: pci@0000:00:15.1
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=intel-lpss latency=0
+             resources: irq:17 memory:edd37000-edd37fff
+        *-communication:0
+             description: Communication controller
+             product: 100 Series/C230 Series Chipset Family MEI Controller #1
+             vendor: Intel Corporation
+             physical id: 16
+             bus info: pci@0000:00:16.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=mei_me latency=0
+             resources: irq:128 memory:edd36000-edd36fff
+        *-communication:1
+             description: Serial controller
+             product: 100 Series/C230 Series Chipset Family KT Redirection
+             vendor: Intel Corporation
+             physical id: 16.3
+             bus info: pci@0000:00:16.3
+             version: 31
+             width: 32 bits
+             clock: 66MHz
+             capabilities: 16550 cap_list
+             configuration: driver=serial latency=0
+             resources: irq:19 ioport:f0a0(size=8) memory:edd35000-edd35fff
+        *-sata
+             description: SATA controller
+             product: Q170/Q150/B150/H170/H110/Z170/CM236 Chipset SATA Controller [AHCI Mode]
+             vendor: Intel Corporation
+             physical id: 17
+             bus info: pci@0000:00:17.0
+             version: 31
+             width: 32 bits
+             clock: 66MHz
+             capabilities: sata ahci_1.0 bus_master cap_list
+             configuration: driver=ahci latency=0
+             resources: irq:129 memory:edd30000-edd31fff memory:edd34000-edd340ff ioport:f090(size=8) ioport:f080(size=4) ioport:f060(size=32) memory:edd33000-edd337ff
+        *-pci:1
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #1
+             vendor: Intel Corporation
+             physical id: 1c
+             bus info: pci@0000:00:1c.0
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:123 memory:edc00000-edcfffff
+           *-network
+                description: Wireless interface
+                product: Wireless 8265 / 8275
+                vendor: Intel Corporation
+                physical id: 0
+                bus info: pci@0000:02:00.0
+                logical name: wlp2s0
+                version: 78
+                serial: 5c:5f:67:c7:70:45
+                width: 64 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list ethernet physical wireless
+                configuration: broadcast=yes driver=iwlwifi driverversion=5.10.4-arch2-1 firmware=36.ad812ee0.0 8265-36.ucode ip=192.168.15.24 latency=0 link=yes multicast=yes wireless=IEEE 802.11
+                resources: irq:141 memory:edc00000-edc01fff
+        *-pci:2
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #2
+             vendor: Intel Corporation
+             physical id: 1c.1
+             bus info: pci@0000:00:1c.1
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:124 ioport:d000(size=4096) memory:ed100000-edafffff ioport:d2100000(size=10485760)
+           *-generic
+                description: MMC Host
+                product: RTS525A PCI Express Card Reader
+                vendor: Realtek Semiconductor Co., Ltd.
+                physical id: 0
+                bus info: pci@0000:03:00.0
+                logical name: mmc0
+                version: 01
+                width: 32 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list
+                configuration: driver=rtsx_pci latency=0
+                resources: irq:138 memory:ed100000-ed100fff
+        *-pci:3
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #9
+             vendor: Intel Corporation
+             physical id: 1d
+             bus info: pci@0000:00:1d.0
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:125 memory:edb00000-edbfffff
+           *-nvme
+                description: NVMe device
+                product: PC401 NVMe SK hynix 1TB
+                vendor: SK hynix
+                physical id: 0
+                bus info: pci@0000:04:00.0
+                logical name: /dev/nvme0
+                version: 80003E00
+                serial: EJ83N447811703B3Q
+                width: 64 bits
+                clock: 33MHz
+                capabilities: nvme nvm_express bus_master cap_list
+                configuration: driver=nvme latency=0 nqn=nqn.2014.08.org.nvmexpress:1c5c1c5cEJ83N447811703B3Q   PC401 NVMe SK hynix 1TB state=live
+                resources: irq:16 memory:edb00000-edb03fff
+              *-namespace
+                   description: NVMe disk
+                   physical id: 1
+                   bus info: nvme@0:1
+                   logical name: /dev/nvme0n1
+                   configuration: wwid=eui.ace42e817006bd69
+        *-pci:4
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #13
+             vendor: Intel Corporation
+             physical id: 1d.4
+             bus info: pci@0000:00:1d.4
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:126
+        *-pci:5
+             description: PCI bridge
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #15
+             vendor: Intel Corporation
+             physical id: 1d.6
+             bus info: pci@0000:00:1d.6
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:127 ioport:2000(size=4096) memory:d4000000-ea0fffff ioport:90000000(size=570425344)
+           *-pci
+                description: PCI bridge
+                product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                vendor: Intel Corporation
+                physical id: 0
+                bus info: pci@0000:06:00.0
+                version: 00
+                width: 32 bits
+                clock: 33MHz
+                capabilities: pci normal_decode bus_master cap_list
+                configuration: driver=pcieport
+                resources: irq:143 memory:d4000000-ea0fffff ioport:90000000(size=570425344)
+              *-pci:0
+                   description: PCI bridge
+                   product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                   vendor: Intel Corporation
+                   physical id: 0
+                   bus info: pci@0000:07:00.0
+                   version: 00
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: pci normal_decode bus_master cap_list
+                   configuration: driver=pcieport
+                   resources: irq:144 memory:ea000000-ea0fffff
+                 *-generic
+                      description: System peripheral
+                      product: DSL6340 Thunderbolt 3 NHI [Alpine Ridge 2C 2015]
+                      vendor: Intel Corporation
+                      physical id: 0
+                      bus info: pci@0000:08:00.0
+                      version: 00
+                      width: 32 bits
+                      clock: 33MHz
+                      capabilities: bus_master cap_list
+                      configuration: driver=thunderbolt latency=0
+                      resources: irq:18 memory:ea000000-ea03ffff memory:ea040000-ea040fff
+              *-pci:1
+                   description: PCI bridge
+                   product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                   vendor: Intel Corporation
+                   physical id: 1
+                   bus info: pci@0000:07:01.0
+                   version: 00
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: pci normal_decode bus_master cap_list
+                   configuration: driver=pcieport
+                   resources: irq:145 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                 *-pci
+                      description: PCI bridge
+                      product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                      vendor: Intel Corporation
+                      physical id: 0
+                      bus info: pci@0000:09:00.0
+                      version: 00
+                      width: 32 bits
+                      clock: 33MHz
+                      capabilities: pci normal_decode bus_master cap_list
+                      configuration: driver=pcieport
+                      resources: irq:163 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                    *-pci:0
+                         description: PCI bridge
+                         product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                         vendor: Intel Corporation
+                         physical id: 1
+                         bus info: pci@0000:0a:01.0
+                         version: 00
+                         width: 32 bits
+                         clock: 33MHz
+                         capabilities: pci normal_decode bus_master cap_list
+                         configuration: driver=pcieport
+                         resources: irq:164
+                    *-pci:1
+                         description: PCI bridge
+                         product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                         vendor: Intel Corporation
+                         physical id: 4
+                         bus info: pci@0000:0a:04.0
+                         version: 00
+                         width: 32 bits
+                         clock: 33MHz
+                         capabilities: pci normal_decode bus_master cap_list
+                         configuration: driver=pcieport
+                         resources: irq:165 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                       *-pci
+                            description: PCI bridge
+                            product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                            vendor: Intel Corporation
+                            physical id: 0
+                            bus info: pci@0000:0c:00.0
+                            version: 00
+                            width: 64 bits
+                            clock: 33MHz
+                            capabilities: pci normal_decode bus_master cap_list
+                            configuration: driver=pcieport
+                            resources: iomemory:1f10-1f0f irq:166 memory:d4000000-e9efffff ioport:90000000(size=570425344)
+                          *-pci:0
+                               description: PCI bridge
+                               product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                               vendor: Intel Corporation
+                               physical id: 1
+                               bus info: pci@0000:0d:01.0
+                               version: 00
+                               width: 32 bits
+                               clock: 33MHz
+                               capabilities: pci normal_decode bus_master cap_list
+                               configuration: driver=pcieport
+                               resources: irq:167 memory:d4000000-d40fffff
+                             *-usb
+                                  description: USB controller
+                                  product: ASM1042A USB 3.0 Host Controller
+                                  vendor: ASMedia Technology Inc.
+                                  physical id: 0
+                                  bus info: pci@0000:0e:00.0
+                                  version: 00
+                                  width: 64 bits
+                                  clock: 33MHz
+                                  capabilities: xhci bus_master cap_list
+                                  configuration: driver=xhci_hcd latency=0
+                                  resources: irq:16 memory:d4000000-d4007fff
+                          *-pci:1
+                               description: PCI bridge
+                               product: DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+                               vendor: Intel Corporation
+                               physical id: 4
+                               bus info: pci@0000:0d:04.0
+                               version: 00
+                               width: 32 bits
+                               clock: 33MHz
+                               capabilities: pci normal_decode bus_master cap_list
+                               configuration: driver=pcieport
+                               resources: irq:168 memory:d4100000-e9efffff ioport:90000000(size=570425344)
+              *-pci:2
+                   description: PCI bridge
+                   product: DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+                   vendor: Intel Corporation
+                   physical id: 2
+                   bus info: pci@0000:07:02.0
+                   version: 00
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: pci normal_decode bus_master cap_list
+                   configuration: driver=pcieport
+                   resources: irq:146 memory:e9f00000-e9ffffff
+        *-isa
+             description: ISA bridge
+             product: CM238 Chipset LPC/eSPI Controller
+             vendor: Intel Corporation
+             physical id: 1f
+             bus info: pci@0000:00:1f.0
+             version: 31
+             width: 32 bits
+             clock: 33MHz
+             capabilities: isa bus_master
+             configuration: latency=0
+        *-memory UNCLAIMED
+             description: Memory controller
+             product: 100 Series/C230 Series Chipset Family Power Management Controller
+             vendor: Intel Corporation
+             physical id: 1f.2
+             bus info: pci@0000:00:1f.2
+             version: 31
+             width: 32 bits
+             clock: 33MHz (30.3ns)
+             configuration: latency=0
+             resources: memory:edd2c000-edd2ffff
+        *-multimedia
+             description: Audio device
+             product: CM238 HD Audio Controller
+             vendor: Intel Corporation
+             physical id: 1f.3
+             bus info: pci@0000:00:1f.3
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=snd_hda_intel latency=32
+             resources: irq:17 memory:edd28000-edd2bfff memory:edd00000-edd0ffff
+        *-serial
+             description: SMBus
+             product: 100 Series/C230 Series Chipset Family SMBus
+             vendor: Intel Corporation
+             physical id: 1f.4
+             bus info: pci@0000:00:1f.4
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             configuration: driver=i801_smbus latency=0
+             resources: irq:16 memory:edd32000-edd320ff ioport:f040(size=32)
+     *-pnp00:00
+          product: Motherboard registers
+          physical id: 2
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:01
+          product: Motherboard registers
+          physical id: 3
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:02
+          product: AT Real-Time Clock
+          physical id: 4
+          capabilities: pnp
+          configuration: driver=rtc_cmos
+     *-pnp00:03
+          product: PnP device INT3f0d
+          vendor: Interphase Corporation
+          physical id: 5
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:04
+          product: IBM Enhanced keyboard controller (101/2-key)
+          physical id: 6
+          capabilities: pnp
+          configuration: driver=i8042 kbd
+     *-pnp00:05
+          product: PnP device DLL07bf
+          vendor: Dell Inc
+          physical id: 7
+          capabilities: pnp
+          configuration: driver=i8042 aux
+     *-pnp00:06
+          product: Motherboard registers
+          physical id: 8
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:07
+          product: Motherboard registers
+          physical id: 9
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:08
+          product: Motherboard registers
+          physical id: a
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:09
+          product: Motherboard registers
+          physical id: b
+          capabilities: pnp
+          configuration: driver=system
+  *-network
+       description: Ethernet interface
+       physical id: 1
+       bus info: usb@4:1.2
+       logical name: enp14s0u1u2
+       serial: 10:65:30:a6:48:b8
+       size: 10Mbit/s
+       capacity: 1Gbit/s
+       capabilities: ethernet physical tp mii 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=r8152 driverversion=v1.11.11 duplex=half firmware=rtl8153a-3 v2 02/07/20 link=no multicast=yes port=MII speed=10Mbit/s
+00:00.0 Host bridge: Intel Corporation Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers (rev 05)
+00:01.0 PCI bridge: Intel Corporation Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor PCIe Controller (x16) (rev 05)
+00:02.0 VGA compatible controller: Intel Corporation HD Graphics P630 (rev 04)
+00:04.0 Signal processing controller: Intel Corporation Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Thermal Subsystem (rev 05)
+00:14.0 USB controller: Intel Corporation 100 Series/C230 Series Chipset Family USB 3.0 xHCI Controller (rev 31)
+00:14.2 Signal processing controller: Intel Corporation 100 Series/C230 Series Chipset Family Thermal Subsystem (rev 31)
+00:15.0 Signal processing controller: Intel Corporation 100 Series/C230 Series Chipset Family Serial IO I2C Controller #0 (rev 31)
+00:15.1 Signal processing controller: Intel Corporation 100 Series/C230 Series Chipset Family Serial IO I2C Controller #1 (rev 31)
+00:16.0 Communication controller: Intel Corporation 100 Series/C230 Series Chipset Family MEI Controller #1 (rev 31)
+00:16.3 Serial controller: Intel Corporation 100 Series/C230 Series Chipset Family KT Redirection (rev 31)
+00:17.0 SATA controller: Intel Corporation Q170/Q150/B150/H170/H110/Z170/CM236 Chipset SATA Controller [AHCI Mode] (rev 31)
+00:1c.0 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #1 (rev f1)
+00:1c.1 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #2 (rev f1)
+00:1d.0 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #9 (rev f1)
+00:1d.4 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #13 (rev f1)
+00:1d.6 PCI bridge: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #15 (rev f1)
+00:1f.0 ISA bridge: Intel Corporation CM238 Chipset LPC/eSPI Controller (rev 31)
+00:1f.2 Memory controller: Intel Corporation 100 Series/C230 Series Chipset Family Power Management Controller (rev 31)
+00:1f.3 Audio device: Intel Corporation CM238 HD Audio Controller (rev 31)
+00:1f.4 SMBus: Intel Corporation 100 Series/C230 Series Chipset Family SMBus (rev 31)
+01:00.0 3D controller: NVIDIA Corporation GM107GLM [Quadro M1200 Mobile] (rev a2)
+02:00.0 Network controller: Intel Corporation Wireless 8265 / 8275 (rev 78)
+03:00.0 Unassigned class [ff00]: Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader (rev 01)
+04:00.0 Non-Volatile memory controller: SK hynix Device 1527
+06:00.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+07:00.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+07:01.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+07:02.0 PCI bridge: Intel Corporation DSL6340 Thunderbolt 3 Bridge [Alpine Ridge 2C 2015]
+08:00.0 System peripheral: Intel Corporation DSL6340 Thunderbolt 3 NHI [Alpine Ridge 2C 2015]
+09:00.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0a:01.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0a:04.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0c:00.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0d:01.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0d:04.0 PCI bridge: Intel Corporation DSL6540 Thunderbolt 3 Bridge [Alpine Ridge 4C 2015]
+0e:00.0 USB controller: ASMedia Technology Inc. ASM1042A USB 3.0 Host Controller
