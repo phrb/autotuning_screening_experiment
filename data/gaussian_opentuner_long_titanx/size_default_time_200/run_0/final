@@ -1,0 +1,1 @@
+  --prec-sqrt=true   --relocatable-device-code=false   --gpu-architecture=sm_50   --ftz=false   --prec-div=false  -Xptxas  --fmad=true  -Xptxas  --def-load-cache=ca  -Xptxas  --allow-expensive-optimizations=true  -Xptxas  --opt-level=3  -Xptxas  --maxrregcount=31  -Xnvlink  --preserve-relocs 
