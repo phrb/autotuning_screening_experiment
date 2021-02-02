@@ -4,7 +4,7 @@ Flag, --no-align-double,on,off
 Flag, --use_fast_math,on,off
 Enumeration, --ftz=,true,false
 Enumeration, --prec-sqrt=,true,false
-Enumeration, --gpu-architecture=,sm_50,sm_52
+Enumeration, --gpu-architecture=,sm_50,sm_50
 Enumeration, --optimize=,2,3
 Enumeration, --relocatable-device-code=,true,false
 Enumeration, --prec-div=,true,false
